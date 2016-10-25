@@ -1,0 +1,75 @@
+.list-top{
+  margin-top: 2px;
+}
+.phone{
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background: url(../images/estate-img/rapidphone.png) no-repeat;
+  background-size: 1.2rem auto;
+  vertical-align: middle;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.img-list div p{
+  text-align: center;
+}
+
+.img-list div img{
+  width: 60%;
+  display:block;
+  margin:0 auto
+}
+
+.house-img-list{
+  position: absolute;bottom: 0;height: 48px;width: 100%;background-color: #00558b;padding-top: 4px;
+}
+
+.house-img-list div span{
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  padding-top: 4px;
+}
+
+.house-img-list div img{
+  display:block;
+  margin:0 auto
+}
+
+
+.icon-top-home {
+  width: 1rem;
+  content: url(../images/estate-img/home_1.png);
+}
+
+.icon-top-menu {
+  font-size:28pt;
+  width: .5em;
+  content: url(../images/estate-img/top_menu.png);
+}
+
+
+
+.menu-list {
+  margin-top:1rem;
+  position: absolute;
+  right: 0px;
+  width: 5rem;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 1px 3px #d7dadb;
+  line-height: 3rem;
+  z-index: 1000;
+}
+
+.menu-list li{
+  border: 1px solid  #d7dadb ;
+  list-style-type:none;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 150px;
+}

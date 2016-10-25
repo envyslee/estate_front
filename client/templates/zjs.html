@@ -1,0 +1,48 @@
+---
+name: zjs_login
+url: /zjs_login/:data
+controller: zjsLoginController
+dependencies: controllers/zjsLoginController,services/zjsService,services/userService,services/commonService
+---
+  <section id="ConsultantLogin" class="SelectStore">
+
+    <div class="page-content   flex-center">
+      <div>
+      <div class="picture mb40">
+        <img src="assets/images/liren-img/pic.jpg">
+      </div>
+      <div class="list-block">
+
+        <ul>
+          <li>
+            <div class="item-inner">
+              <div class="item-title label">账号：</div>
+              <div class="item-input">
+                <input type="text" name="userName" ng-model="userName" autofocus required>
+              </div>
+            </div>
+
+          </li>
+          <li>
+            <div class="item-inner">
+              <div class="item-title label">密码：</div>
+              <div class="item-input">
+                <input type="password" name="pwd" ng-model="pwd" required>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+
+        <input type="button" class="btn-Oval btn-Oval-big btn-Oval-big-m" value="登录" ng-click='loginBtn()'>
+      <!--<a ng-href="" class="btn-Oval btn-Oval-big btn-Oval-big-m"  ng-click="loginBtn()">登录</a>-->
+    </div>
+    </div>
+    <div class="footer-btn "></div>
+  </section>
+
+
+
+
+
