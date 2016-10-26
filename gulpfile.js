@@ -55,7 +55,8 @@ var paths = {
   //requirejs
   requireJs: [
     'client/assets/js/main.js',
-    'client/assets/js/amazeui.swiper.min.js'
+    'client/assets/js/amazeui.swiper.min.js',
+    'client/assets/js/ng-infinite-scroll.js'
   ],
   // These files are for your app's JavaScript
   appJS: [

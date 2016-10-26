@@ -1,0 +1,60 @@
+
+<section id="CreditLog" ng-init="init()">
+  <form name="creditForm">
+
+
+    <div class="page-content" style="padding:0">
+      <div class="ui-header ">
+      </div>
+      <div style="padding:20px 30px">
+        <p>      请填写人行征信账号和密码</p>
+        <ul class=" list-block " style="padding:0">
+          <li>
+            <div class="item-inner">
+              <div class="item-title label">央行征信账号：</div>
+              <div class="item-input">
+                <input type="text" name="username" ng-model="form.username" autofocus="autofocus">
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-inner">
+              <div class="item-title label">央行征信密码：</div>
+              <div class="item-input">
+                <input type="password" name="password" ng-model="form.password">
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-inner">
+              <div class="item-title label">验证码：</div>
+              <div class="item-input">
+                <div class="item-input-inner">
+                  <input type="text" ng-model="form.vercode">
+
+                  <div class="btn-verify">
+                    <img ng-src="{{form.url}}" ng-click="init()" ng-if="form.url"/>
+                    <img src="assets/images/loading.gif" style="width:32px;height:32px;" ng-if="!form.url"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-inner noborder">
+              <div>
+                <span><a href="#!/crd/register" alt="" class=" " style="font-weight:bloder;color:#000000">开通征信查询</a></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="btn-Oval btn-Oval-big btn-Oval-big-m "
+             ng-class="{'btn-Oval-disabled':form.username=='' || form.password==''|| form.vercode=='' }"
+             ng-click="submitForm($event)">登录
+        </div>
+        <img src="assets/images/liren-img/icon_help.png" style="width: 90%">
+      </div>
+
+    </div>
+  </form>
+</section>

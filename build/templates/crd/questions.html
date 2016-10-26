@@ -1,0 +1,55 @@
+
+<section ng-if="results.length>0" >
+  <div class="page-content">
+    <div ng-repeat="result in results|orderBy:$index " ng-if="results.length>0">
+      <div id="step1" ng-if="currentStep==$index">
+        <p class="mt40">
+          <span>问题{{$index+1}}：</span>
+          <span>{{::result.question}}</span>
+        </p>
+
+        <div class="list-block ">
+          <ul>
+            <li ng-click="selectOption($index,1)">
+              <buttom class="item-inner-2" ng-class="{'item-inner-3':result.answerresult==1}">
+                <div><p>A</p></div>
+                <div><p> {{::result.options1}}</p></div>
+              </buttom>
+            </li>
+            <li ng-click="selectOption($index,2)">
+              <buttom class="item-inner-2" ng-class="{'item-inner-3':result.answerresult==2}">
+                <div><p>B</p></div>
+                <div><p>{{::result.options2}}</p></div>
+              </buttom>
+            </li>
+            <li ng-click="selectOption($index,3)">
+              <buttom class="item-inner-2" ng-class="{'item-inner-3':result.answerresult==3}">
+                <div><p>C</p></div>
+                <div><p> {{::result.options3}}</p></div>
+              </buttom>
+            </li>
+            <li ng-click="selectOption($index,4)">
+              <buttom class="item-inner-2" ng-class="{'item-inner-3':result.answerresult==4}">
+                <div><p>D</p></div>
+                <div><p> {{::result.options4}}</p></div>
+              </buttom>
+            </li>
+            <li ng-click="selectOption($index,5)">
+              <buttom class="item-inner-2" ng-class="{'item-inner-3':result.answerresult==5}">
+                <div><p>E</p></div>
+                <div><p>{{::result.options5}}</p></div>
+              </buttom>
+            </li>
+          </ul>
+          <div class="btn-Oval btn-Oval-big " ng-if="currentStep==results.length - 1" ng-click="SubmitAnswer()">提交</div>
+        </div>
+
+      </div>
+    </div>
+    <div ng-if="currentStep>0">
+      <div class="footer-btn ">
+        <div class="btn-pre" ng-click="last();"></div>
+      </div>
+    </div>
+  </div>
+</section>

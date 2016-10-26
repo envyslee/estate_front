@@ -1,0 +1,37 @@
+<section id="ConsultantInformation" class="SelectStore " ng-if="isShow">
+
+  <div class="page-content flex-center">
+    <div>
+      <p>贷款顾问确认信息后会立即联系您</p>
+
+      <div class=" mt80 flex store-s">
+ <span class="picture">
+ <img src="assets/images/liren-img/pic.jpg"></span>
+ <span class="Triangle-all">
+ <i class="Triangle"></i>
+  <i class="Triangle"></i>
+   <i class="Triangle"></i>
+    <i class="Triangle"></i>
+     <i class="Triangle"></i>
+      <i class="Triangle"></i>
+ </span>
+
+        <span class="picture-iphone"><img src="assets/images/liren-img/tel-iphone.png"></span>
+      </div>
+      <div class=" mt80">
+        <p class="flex-equal"><span>贷款顾问：</span><span>{{::success.agentName}}</span></p>
+
+        <p class="flex-equal"><span>联系电话：</span><span>{{::success.agentMobile}}</a></span></p>
+      </div>
+      <a href="tel:{{::success.agentMobile}}">
+        <div class="btn-Oval btn-Oval-big btn-Oval-big-m ">
+          <span class="icon-tel-white"></span>立即联系我的顾问
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+

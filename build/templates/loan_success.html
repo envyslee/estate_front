@@ -1,0 +1,91 @@
+
+<div ng-if="isShow">
+  <!--选择门店(本地)-->
+  <section id="applicationSuccessful" class="SelectStore" ng-if="isCode==0">
+    <div class="page-content page-content_big">
+      <div class="mt80">
+        <img src="assets/images/liren-img/icon_success_message.png">
+      </div>
+      <div class="mt40 ">
+        <div class="flex store-s flex-equal">
+          <div class="animated slideInLeft">
+            <p>服务门店
+
+            <p>
+          </div>
+
+          <div class="animated slideInLeft">
+            <div class="icon-store">
+              <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
+              class="path4"></span><span class="path5"></span><span class="path6"></span><span
+              class="path7"></span><span class="path8"></span><span class="path9"></span><span
+              class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span>
+            </div>
+          </div>
+        </div>
+
+        <address class="flex">
+          <div class="icon-location" style="-webkit-box-flex:1;"></div>
+          <div style="-webkit-box-flex:2;">
+            <p>{{::store.storeName}}</p>
+            <!--<p class="word-wrap">{{::store.storeAddress}}</p>-->
+            <p style="white-space:normal">{{::store.storeAddress}}</p>
+          </div>
+        </address>
+      </div>
+
+    </div>
+  </section>
+  <section id="SelectStore" class="SelectStore" ng-if="isCode==1">
+
+    <div class="page-content page-content_big">
+      <div class="mt40 ">
+        <div class="flex store-s flex-equal">
+          <div>
+            <p>根据您的所在位置，
+
+            <p>
+
+            <p>我们为您推荐以下门店</p>
+          </div>
+
+          <div>
+            <div class="icon-store">
+              <span class="path1"></span><span class="path2"></span><span class="path3"></span><span
+              class="path4"></span><span
+              class="path5"></span><span class="path6"></span><span class="path7"></span><span
+              class="path8"></span><span
+              class="path9"></span><span class="path10"></span><span class="path11"></span><span
+              class="path12"></span><span class="path13"></span>
+            </div>
+          </div>
+        </div>
+
+        <address class="flex">
+          <div class="icon-location"></div>
+          <div>
+            <p>{{::store.storeName}}</p>
+            {{::store.storeAddress}}
+          </div>
+        </address>
+      </div>
+
+      <div class=" mt80">
+ <span class="picture">
+ <img src="assets/images/liren-img/pic.jpg"></span>
+      </div>
+      <div class=" mt40">
+        <p class="flex-equal"><span>贷款顾问：</span><span>{{::store.agentName}}</span></p>
+
+        <p class="flex-equal"><span>联系电话：</span><span><a href="#">{{::store.agentMobile}}</a></span></p>
+      </div>
+      <a href="tel:{{::store.agentMobile}}">
+        <div class="btn-Oval btn-Oval-big btn-Oval-big-m ">
+          <span class="icon-tel-white"></span>立即联系我的顾问
+        </div>
+      </a>
+    </div>
+
+  </section>
+</div>
+

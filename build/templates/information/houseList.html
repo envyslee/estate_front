@@ -1,0 +1,42 @@
+<div class="ui-container" ng-init="houseListInit()">
+  <div class="primary title-bar">
+    <div class="center title">{{title}}</div>
+    <span class="left"><a ui-sref="house" class="icon-top-home"></a></span>
+    <span class="right">
+      <a  ng-click="toggleMenu()"><i class="icon-top-menu"></i></a>
+      <ul id="menu-list" class="menu-list" ng-show="menushow">
+        <li><a ui-sref="download" style="color: #0f0f0f;">卖房信息 </a></li>
+        <li><a ui-sref="stores" style="color: #0f0f0f;">出租信息 </a></li>
+      </ul>
+    </span>
+  </div>
+
+
+
+    <span class="inline-label" style="margin: 1rem 0 .5rem 0">
+    <input type="search" placeholder="Search a thing">
+    <a href="#" class="button">搜索</a>
+    </span>
+
+
+  <div infinite-scroll='nextPage()' infinite-scroll-disabled='list.busy' infinite-scroll-distance='1'>
+    <div class="grid-block" ng-repeat="t in list.items" style="border-bottom: 1px solid #ccc">
+      <a ui-sref="houseDetail({id:'{{t.id}}'})" style="display: inherit">
+        <div class="grid-block small-4">
+          <img src="assets/images/liren-img/icon_id.png" style="max-width:100%;max-height:100%;background-position:center top">
+        </div>
+        <div class="grid-block small-8 vertical house-list" style="margin: auto 0">
+          <strong style="">{{t.title}}</strong>
+          <span style="line-height:1.5;">面积：{{t.area}}</span>
+          <span>价格：{{t.price}}</span>
+          <span>发布时间：{{t.time}}</span>
+        </div>
+      </a>
+    </div>
+    <div ng-show="list.busy">正在加载...</div>
+  </div>
+
+  <a class="float-circle"  href="javascript:scroll(0,0)"></a>
+
+
+</div>

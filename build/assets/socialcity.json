@@ -1,0 +1,63 @@
+{
+  "Social_City": [
+    {
+      "CityCode": "sh_shanghai",
+      "CityName": "上海",
+      "IsSocial": true,
+      "IsGjj": true
+    },
+    {
+      "CityCode": "sd_qingdao",
+      "CityName": "青岛",
+      "IsSocial": true,
+      "IsGjj": true
+    },
+    {
+      "CityCode": "sc_chengdu",
+      "CityName": "成都",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "bj_beijing",
+      "CityName": "北京",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "js_nanjing",
+      "CityName": "南京",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "cq_chongqing",
+      "CityName": "重庆",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "fj_xiamen",
+      "CityName": "厦门",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "zj_ningbo",
+      "CityName": "宁波",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "zj_hangzhou",
+      "CityName": "杭州",
+      "IsSocial": true,
+      "IsGjj": true
+    },{
+      "CityCode": "js_suzhou",
+      "CityName": "苏州",
+      "IsSocial": true,
+      "IsGjj": true,
+      "GjjLoginType":[2,3]
+    },{
+      "CityCode": "js_wuxi",
+      "CityName": "无锡",
+      "IsSocial": false,
+      "IsGjj": true
+    }
+  ]
+}
