@@ -1,18 +1,18 @@
 ---
 name: houseDetail
-url: /houseDetail/:id
+url: /houseDetail/:from/:id
 controller: houseDetailController
 dependencies: controllers/houseDetailController,services/commonService
 ---
 <div class="ui-container">
   <div class="primary title-bar">
     <div class="center title">详情</div>
-    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
+    <span class="left"><a style="display: block;" ng-click="goBack()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
     <span class="right">
       <a  ng-click="toggleMenu()"><i class="icon-top-menu"></i></a>
       <ul id="menu-list" class="menu-list" ng-show="menushow">
-        <li><a ui-sref="download" style="color: #0f0f0f;">卖房信息 </a></li>
-        <li><a ui-sref="stores" style="color: #0f0f0f;">出租信息 </a></li>
+         <li><a ui-sref="houseList({type:'sale'})" style="color: #0f0f0f;">卖房信息 </a></li>
+        <li><a ui-sref="houseList({type:'tenement'})" style="color: #0f0f0f;">出租信息 </a></li>
       </ul>
     </span>
   </div>
@@ -64,7 +64,8 @@ dependencies: controllers/houseDetailController,services/commonService
     </div>
 
 
-    <div class="grid-block align-center creditCard-div">
+
+    <div class="grid-block align-center creditCard-div" ng-click="goGallery()">
       <div class="grid-block small-2">
         <p>图片</p>
       </div>
@@ -72,6 +73,7 @@ dependencies: controllers/houseDetailController,services/commonService
         <i class="right-arrow"></i>
       </div>
     </div>
+
 
     <a class="warning button expand" ui-sref="reserve" style="margin-top: 1rem">我要看房</a>
   </div>

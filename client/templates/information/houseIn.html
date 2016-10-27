@@ -11,8 +11,8 @@ dependencies: controllers/inController,services/commonService
     <span class="right">
       <a  ng-click="toggleMenu()"><i class="icon-top-menu"></i></a>
       <ul id="menu-list" class="menu-list" ng-show="menushow">
-        <li><a ui-sref="download" style="color: #0f0f0f;">卖房信息 </a></li>
-        <li><a ui-sref="stores" style="color: #0f0f0f;">出租信息 </a></li>
+         <li><a ui-sref="houseList({type:'sale'})" style="color: #0f0f0f;">卖房信息 </a></li>
+        <li><a ui-sref="houseList({type:'tenement'})" style="color: #0f0f0f;">出租信息 </a></li>
       </ul>
     </span>
   </div>

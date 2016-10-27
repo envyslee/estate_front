@@ -9,10 +9,26 @@ define([], function () {
       $state: $state
     }));
 
+    var from=$stateParams.from;
+    var id=$stateParams.id;
+
     $scope.menushow = false;
     $scope.toggleMenu = function () {
       $scope.menushow = !$scope.menushow;
     }
+
+    $scope.goBack=function () {
+     if(from=='home'){
+       $state.go('house');
+     }else {
+       $state.go('houseList',{type:from});
+     }
+    }
+
+    $scope.goGallery=function () {
+      $state.go('gallery',{from:from,id:id});
+    }
+
 
 
   };

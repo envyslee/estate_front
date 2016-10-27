@@ -33,7 +33,8 @@ var paths = {
   ],
   css: [
     'client/assets/css/estate.css',
-    'client/assets/css/amazeui.swiper.min.css'
+    'client/assets/css/amazeui.swiper.min.css',
+    //'client/assets/css/amazeui.css'
   ],
   font: [
     'client/assets/css/fonts/*.*'
@@ -56,12 +57,12 @@ var paths = {
   requireJs: [
     'client/assets/js/main.js',
     'client/assets/js/amazeui.swiper.min.js',
-    'client/assets/js/ng-infinite-scroll.js'
+    'client/assets/js/ng-infinite-scroll.js',
+    'client/assets/js/amazeui.js',
   ],
   // These files are for your app's JavaScript
   appJS: [
     'client/assets/js/app.js',
-    'client/assets/js/iscroll-probe.js'
   ],
   controllerJS: [
     'client/assets/js/controllers/*.js',

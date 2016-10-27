@@ -10,10 +10,15 @@ define([], function () {
     }));
 
     $scope.title= $stateParams.type=='sale'?'我要卖房':'我要出租';
-    
+
     $scope.menushow = false;
     $scope.toggleMenu = function () {
       $scope.menushow = !$scope.menushow;
+    }
+
+    $scope.uploadImg = function () {
+      var file = event.target.files[0].name;
+      alert('选择的文件名称：'+file);
     }
 
 

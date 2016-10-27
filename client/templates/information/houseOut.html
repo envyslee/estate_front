@@ -11,12 +11,21 @@ dependencies: controllers/outController,services/commonService
     <span class="right">
       <a  ng-click="toggleMenu()"><i class="icon-top-menu"></i></a>
       <ul id="menu-list" class="menu-list" ng-show="menushow">
-        <li><a ui-sref="download" style="color: #0f0f0f;">卖房信息 </a></li>
-        <li><a ui-sref="stores" style="color: #0f0f0f;">出租信息 </a></li>
+       <li><a ui-sref="houseList({type:'sale'})" style="color: #0f0f0f;">卖房信息 </a></li>
+        <li><a ui-sref="houseList({type:'tenement'})" style="color: #0f0f0f;">出租信息 </a></li>
       </ul>
     </span>
   </div>
   <form style="margin: 1rem 1rem 0 1rem" id="saleForm" name="saleForm">
+
+    <input id="p1"  type="file" capture="camera" accept="image/*" style="display: none" input-on-change="uploadImg" required>
+    <label for="p1">
+      <div class="za_picture" >
+        <i  class="zd_icon zd_iconfont">&#xe60e;</i>
+      </div>
+      <i>1上传照片</i>
+    </label>
+
 
     <label>
       选择位置</label>
@@ -84,7 +93,7 @@ dependencies: controllers/outController,services/commonService
     </label>
 
     <p class="alert-font"><span style="color: red">*</span>提交后，我们的工作人员将尽快给您推荐优质客源</p>
-    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[saleForm.$invalid]">登录</a>
+    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[saleForm.$invalid]">提交</a>
   </form>
 
 </div>

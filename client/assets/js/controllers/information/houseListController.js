@@ -16,7 +16,13 @@ define([], function () {
       page : 0
   }
 
-    $scope.title=$stateParams.type=='sale'?'卖房信息':'租房信息';
+    if($stateParams.type=='sale'){
+      $scope.title='卖房信息';
+      $scope.goType='sale';
+    }else {
+      $scope.title='出租信息';
+      $scope.goType='tenement';
+    }
 
     $scope.menushow = false;
     $scope.toggleMenu = function () {

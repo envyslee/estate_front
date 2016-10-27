@@ -73,7 +73,10 @@ var app = null;
     app.register.directive('vScroll', vScroll);
     app.register.directive('vPageload', vPageLoad);
     app.register.directive('vLoading', vLoading);
+    app.register.directive('inputOnChange',vInputFile);
   }]);
+
+
 
   var param = function (obj) {
 
@@ -122,10 +125,21 @@ var app = null;
         fd.append(key, value);
       }
     });
-
     return fd;
   }
 })();
+
+
+
+var vInputFile=function(){
+  return{
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeFunc = scope.$eval(attrs.inputOnChange);
+      element.bind('change', onChangeFunc);
+    }
+  }
+}
 
 var vScroll = function () {
   return {
