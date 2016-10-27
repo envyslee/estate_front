@@ -91,6 +91,19 @@
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
 }
+.float-circle-cash{
+  position: fixed;
+  bottom: 24px;
+  left: 80%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #EB9C20;
+  background: url(../images/estate-img/yuan.png) no-repeat;
+  background-position:center top;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+}
+
 
 .creditCard-div{
   margin-bottom: 0.5rem;
@@ -120,6 +133,32 @@
 
 .alert-font{
   font-size: 9px;
+}
+
+
+table.gridtable {
+  margin-top: 1.5rem;
+  width: 100%;
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #666666;
+  border-collapse: collapse;
+}
+table.gridtable th {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #dedede;
+}
+table.gridtable td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #666666;
+  background-color: #ffffff;
 }
 
 

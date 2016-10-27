@@ -1,0 +1,55 @@
+---
+name: inFix
+url: /inFix/:userId
+controller: inFixController
+dependencies: controllers/inFixController,services/commonService
+---
+<div class="ui-container">
+  <div class="primary title-bar" style="height: 3rem">
+    <div class="center title">室内报修</div>
+
+  </div>
+  <div class="grid-block vertical" >
+    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter()">
+      <img src="assets/images/estate-img/icon_c_04.png">
+      <strong style="margin: auto 2rem">供电设施维修</strong>
+    </div>
+    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
+      <img src="assets/images/estate-img/icon_c_05.png">
+      <strong  style="margin: auto 2rem">供水设施维修</strong>
+    </div>
+    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
+      <img src="assets/images/estate-img/icon_c_01.png">
+      <strong  style="margin: auto 2rem">家庭物品维修</strong>
+    </div>
+  </div>
+
+  <a class="float-circle-cash"  zf-open="priceModal" ></a>
+  <div zf-modal="" id="priceModal" class="dialog" >
+    <table class="gridtable">
+      <thead>
+      <tr>
+        <th>服务内容</th>
+        <th>价格</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>服务内容1</td>
+        <td>价格1</td>
+      </tr>
+      <tr>
+        <td>服务内容2</td>
+        <td>价格2</td>
+      </tr>
+      <tr>
+        <td>服务内容3</td>
+        <td>价格3</td>
+      </tr>
+      </tbody>
+    </table>
+    <p class="alert-font" style="margin-top: 1rem">友情提醒：此价格针对普通家政服务，仅供参考。具体以实际情况为准。</p>
+    <p class="alert-font" style="margin-top: -12px">咨询电话：<a href="tel:0512-52525258">0512-52525258</a></p>
+  </div>
+
+</div>
