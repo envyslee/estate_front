@@ -4,7 +4,7 @@ url: /houseOut/:type
 controller: outController
 dependencies: controllers/outController,services/commonService
 ---
-<div class="ui-container">
+<div class="ui-container" id="rootDiv" ng-class="{true:'hiddenOverflow',false:''}[chooseImg!=null&&chooseImg!='']">
   <div class="primary title-bar">
     <div class="center title">{{title}}</div>
     <span class="left"><a ui-sref="house" ><img zf-iconic="" icon="home" size="small"></a></span>
@@ -18,13 +18,27 @@ dependencies: controllers/outController,services/commonService
   </div>
   <form style="margin: 1rem 1rem 0 1rem" id="saleForm" name="saleForm">
 
+    <label>
+      最多上传三张图片</label>
+    <div class="grid-block" >
+
     <input id="p1"  type="file" capture="camera" accept="image/*" style="display: none" input-on-change="uploadImg" required>
-    <label for="p1">
+    <label for="p1" style="width: 4.4rem" ng-click="labelClick()">
       <div class="za_picture" >
-        <i  class="zd_icon zd_iconfont">&#xe60e;</i>
+        <i  class="zd_icon zd_iconfont">&nbsp;上传图片</i>
       </div>
-      <i>1上传照片</i>
     </label>
+
+      <div class="grid-block align-right">
+      <img src="{{imgSrc.i1}}"  style="width: 4.4rem;height: 4.4rem;margin-left: 3.2rem" ng-click="showMax(1)" ng-show="imgSrc.i1!=''">
+      <img src="{{imgSrc.i2}}" style="width: 4.4rem;height: 4.4rem" ng-click="showMax(2)" ng-show="imgSrc.i2!=''">
+      <img src="{{imgSrc.i3}}" style="width: 4.4rem;height: 4.4rem" ng-click="showMax(3)" ng-show="imgSrc.i3!=''">
+      </div>
+      <canvas id="uploadImg1" style="display: none" ></canvas>
+      <canvas id="uploadImg2" style="display: none"></canvas>
+      <canvas id="uploadImg3" style="display: none"></canvas>
+    </div>
+
 
 
     <label>
@@ -96,4 +110,9 @@ dependencies: controllers/outController,services/commonService
     <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[saleForm.$invalid]">提交</a>
   </form>
 
+  <div class="showMax" ng-show="chooseImg!=null&&chooseImg!=''" ng-click="closeMax()">
+    <span >
+    <img style="width: 100%;" src="{{chooseImg}}">
+      </span>
+  </div>
 </div>

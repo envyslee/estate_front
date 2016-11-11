@@ -161,6 +161,41 @@ table.gridtable td {
   background-color: #ffffff;
 }
 
+.za_picture{
+  width: 4.4rem;
+  height: 4.4rem;
+  background-color: #F7F7F7;
+  line-height: 4.4rem;
+  border: 1px dashed #DEDEDE;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin-bottom: 10px;
+}
+.za_picture a{
+  display: block;
+}
+.za_picture i{
+  color: #dedede;
+}
+.za_picture.active,
+.za_picture.active i{
+  border-color: rgb(131, 219, 71);
+  color:rgb(131, 219, 71) ;
+}
+
+.showMax{
+  height: 100%;width:100%;background-color: rgba(0,0,0,.5);; position: absolute;top:0%;left: 0%;  z-index: 1000;text-align: center;
+  display: table;
+}
+
+.showMax span{
+  display: table-cell;vertical-align: middle
+}
+
+.hiddenOverflow{
+  overflow: hidden;
+}
+
 
 /* Font-face
 ============================================================================= */
