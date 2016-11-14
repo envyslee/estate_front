@@ -29,10 +29,19 @@ dependencies: controllers/outController,services/commonService
       </div>
     </label>
 
-      <div class="grid-block align-right">
-      <img src="{{imgSrc.i1}}"  style="width: 4.4rem;height: 4.4rem;margin-left: 3.2rem" ng-click="showMax(1)" ng-show="imgSrc.i1!=''">
-      <img src="{{imgSrc.i2}}" style="width: 4.4rem;height: 4.4rem" ng-click="showMax(2)" ng-show="imgSrc.i2!=''">
-      <img src="{{imgSrc.i3}}" style="width: 4.4rem;height: 4.4rem" ng-click="showMax(3)" ng-show="imgSrc.i3!=''">
+
+    <div class="grid-block align-right overImg">
+      <div ng-show="imgSrc.i1!=''" >
+        <img src="{{imgSrc.i1}}"  style="margin-left: 3.2rem;" ng-click="showMax(1)" >
+        <img  src="assets/images/estate-img/cancel.png" ng-click="delImg(1)">
+      </div>
+      <div ng-show="imgSrc.i2!=''" >
+        <img src="{{imgSrc.i2}}" ng-click="showMax(2)" >
+        <img src="assets/images/estate-img/cancel.png" ng-click="delImg(2)">
+      </div>
+      <div ng-show="imgSrc.i3!=''" >
+        <img src="{{imgSrc.i3}}"  ng-click="showMax(3)">
+        <img  src="assets/images/estate-img/cancel.png" ng-click="delImg(3)">
       </div>
       <canvas id="uploadImg1" style="display: none" ></canvas>
       <canvas id="uploadImg2" style="display: none"></canvas>

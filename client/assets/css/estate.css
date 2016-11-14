@@ -184,7 +184,7 @@ table.gridtable td {
 }
 
 .showMax{
-  height: 100%;width:100%;background-color: rgba(0,0,0,.5);; position: absolute;top:0%;left: 0%;  z-index: 1000;text-align: center;
+  height: 100%;width:100%;background-color: rgba(0,0,0,.5); position: fixed;top:0%;left: 0%;  z-index: 1000;text-align: center;
   display: table;
 }
 
@@ -192,8 +192,16 @@ table.gridtable td {
   display: table-cell;vertical-align: middle
 }
 
-.hiddenOverflow{
-  overflow: hidden;
+.overImg div{
+  position: relative
+}
+
+.overImg div img:first-of-type{
+  width: 4.4rem;height: 4.4rem
+}
+
+.overImg div img:last-of-type{
+  width: 2rem;position:absolute;top:-2px;right: -2px;
 }
 
 
