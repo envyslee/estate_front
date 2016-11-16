@@ -2,7 +2,7 @@
  * Created by dell on 2016/10/26.
  */
 define([], function () {
-  var houseDetailController = function ($scope, $stateParams, $state, $controller,commonService) {
+  var houseDetailController = function ($scope, $stateParams, $state, $controller,commonService,informationService) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
@@ -29,9 +29,13 @@ define([], function () {
       $state.go('gallery',{from:from,id:id});
     }
 
+    $scope.detailInit=function () {
+      
+    }
+
 
 
   };
-  houseDetailController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService'];
+  houseDetailController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','informationService'];
   app.register.controller('houseDetailController', houseDetailController);
 });

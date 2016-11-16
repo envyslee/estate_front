@@ -2,9 +2,9 @@
 name: houseOut
 url: /houseOut/:type
 controller: outController
-dependencies: controllers/outController,services/commonService
+dependencies: controllers/outController,services/commonService,services/informationService,services/userService,services/informationService
 ---
-<div class="ui-container" id="rootDiv" ng-class="{true:'hiddenOverflow',false:''}[chooseImg!=null&&chooseImg!='']">
+<div class="ui-container" id="rootDiv" ng-class="{true:'hiddenOverflow',false:''}[chooseImg!=null&&chooseImg!='']" ng-init="outInit()">
   <div class="primary title-bar">
     <div class="center title">{{title}}</div>
     <span class="left"><a ui-sref="house" ><img zf-iconic="" icon="home" size="small"></a></span>
@@ -20,7 +20,6 @@ dependencies: controllers/outController,services/commonService
 
     <label>
       最多上传三张图片</label>
-    <div class="grid-block" >
 
     <input id="p1"  type="file" capture="camera" accept="image/*" style="display: none" input-on-change="uploadImg" required>
     <label for="p1" style="width: 4.4rem" ng-click="labelClick()">
@@ -52,28 +51,24 @@ dependencies: controllers/outController,services/commonService
 
     <label>
       选择位置</label>
-    <select  required>
-      <option value="">碧云山庄</option>
-      <option value="">常福名苑</option>
-      <option value="">海上一品</option>
-      <option value="">汇金广场</option>
+    <select ng-model="outInfo.village" ng-options="x.areaName for x in villages" required>
     </select>
 
     <label>
       选择户型</label>
-    <select  required>
-      <option value="">单间</option>
-      <option value="">一室一厅</option>
-      <option value="">二室一厅</option>
-      <option value="">三室一厅</option>
-      <option value="">四室一厅</option>
-      <option value="">五室一厅</option>
-      <option value="">其它</option>
+    <select ng-model="outInfo.houseType" required>
+      <option value="0">单间</option>
+      <option value="1">一室一厅</option>
+      <option value="2">二室一厅</option>
+      <option value="3">三室一厅</option>
+      <option value="4">四室一厅</option>
+      <option value="5">五室一厅</option>
+      <option value="6">其它</option>
     </select>
 
     <label>
       选择装修</label>
-    <select  required>
+    <select ng-model="outInfo.fixture" required>
       <option value="0">毛坯</option>
       <option value="1">简装</option>
       <option value="2">精装</option>
@@ -81,42 +76,42 @@ dependencies: controllers/outController,services/commonService
 
     <label>
       选择产权</label>
-    <select  required>
+    <select ng-model="outInfo.houseProperty" required>
       <option value="0">70年</option>
       <option value="1">40年</option>
     </select>
 
     <label>
       具体地址
-      <input type="text" placeholder="请输入您房屋的具体地址" required>
+      <input ng-model="outInfo.address" type="text" placeholder="请输入您房屋的具体地址" required>
     </label>
 
     <label>
       面积
-      <input type="text" placeholder="请输入您房屋的面积" required>
+      <input ng-model="outInfo.houseArea" type="text" placeholder="请输入您房屋的面积" required>
     </label>
 
     <label>
       价格
-      <input type="text" placeholder="请输入您的理想价位" required>
+      <input ng-model="outInfo.housePrice" type="text" placeholder="请输入您的理想价位" required>
     </label>
 
     <label>
       姓名
-      <input type="text" placeholder="请输入您的姓名" required>
+      <input ng-model="outInfo.name"  type="text" placeholder="请输入您的姓名" required>
     </label>
 
     <label>
       手机
-      <input type="text" placeholder="请输入您的手机号码" maxlength="11" required>
+      <input ng-model="outInfo.phone"  type="text" placeholder="请输入您的手机号码" maxlength="11" required>
     </label>
     <label>
       备注
-      <textarea placeholder="您可以备注您的特殊要求，比如楼层、绿化等" rows="5" required></textarea>
+      <textarea ng-model="outInfo.remarks" placeholder="您可以备注您的特殊要求，比如楼层、绿化等" rows="5" required></textarea>
     </label>
 
     <p class="alert-font"><span style="color: red">*</span>提交后，我们的工作人员将尽快给您推荐优质客源</p>
-    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[saleForm.$invalid]">提交</a>
+    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[saleForm.$invalid]" ng-click="outSubmit()">提交</a>
   </form>
 
   <div class="showMax" ng-show="chooseImg!=null&&chooseImg!=''" ng-click="closeMax()">

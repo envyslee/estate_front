@@ -4,7 +4,7 @@ url: /houseDetail/:from/:id
 controller: houseDetailController
 dependencies: controllers/houseDetailController,services/commonService
 ---
-<div class="ui-container">
+<div class="ui-container" ng-init="detailInit()">
   <div class="primary title-bar">
     <div class="center title">详情</div>
     <span class="left"><a style="display: block;" ng-click="goBack()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>

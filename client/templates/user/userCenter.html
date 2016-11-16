@@ -2,19 +2,19 @@
 name: userCenter
 url: /userCenter
 controller: userCenterController
-dependencies: controllers/userCenterController,services/commonService
+dependencies: controllers/userCenterController,services/commonService,services/userService
 ---
-<div class="ui-container">
+<div class="ui-container" ng-init="userCenterInit()">
   <div class="primary title-bar">
     <div class="center title">个人中心</div>
     <span class="left"><a href="tel:52920873"><i class="phone"></i></a></span>
-    <span class="right"><a href="javascript:void(0)">退出</a></span>
+    <span class="right"><a href="javascript:void(0)" ng-click="logout()">退出</a></span>
   </div>
   <div style="position:absolute">
     <img src="assets/images/estate-img/center-banner.png" style="width: 100%;height: 150px">
     <div style="position: absolute; top: 24%; text-align: center">
       <img src="assets/images/estate-img/user.png" style="width: 40%">
-      <p  >用户名</p>
+      <p  >{{::nickName}}</p>
     </div>
   </div>
 
@@ -42,7 +42,7 @@ dependencies: controllers/userCenterController,services/commonService
     </div>
     <div class="grid-block vertical">
       <img src="assets/images/estate-img/woman90-on.png">
-      <p>公告保修</p>
+      <p>公告报修</p>
     </div>
     <div class="grid-block vertical">
       <img src="assets/images/estate-img/worker90-on.png">

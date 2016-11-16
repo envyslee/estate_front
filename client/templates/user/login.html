@@ -2,7 +2,7 @@
 name: login
 url: /login
 controller: loginController
-dependencies: controllers/loginController,services/commonService
+dependencies: controllers/loginController,services/commonService,services/userService
 ---
 <div class="ui-container">
   <div class="primary title-bar">
@@ -19,7 +19,7 @@ dependencies: controllers/loginController,services/commonService
       密码
       <input type="text" placeholder="请输入您的登录密码" ng-model="login.password" required>
     </label>
-    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[loginForm.$invalid]">登录</a>
+    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[loginForm.$invalid]" ng-click="loginSubmit()">登录</a>
     <a ui-sref="findPassword" style="float: right">忘记密码？</a>
   </form>
 

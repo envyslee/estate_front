@@ -16,11 +16,10 @@ var app = null;
   ]);
 
   app.service = {
-    //'baseuri': 'http://localhost:8080/o2o/',
-    //'socialuri': 'http://localhost:9090/shebao/',
-    //'gjjuri': 'http://localhost:9090/gjj/',
-    //'fileuri': 'http://localhost:9090/',
-    //'credituri': 'http://localhost:9090/credit/'
+    'baseUrl': 'http://localhost:8080/wy',
+
+    'type':'1',
+    'version':'1.0'
   };
 
   app.config(config);

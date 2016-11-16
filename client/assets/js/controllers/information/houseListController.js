@@ -2,7 +2,7 @@
  * Created by dell on 2016/10/26.
  */
 define([], function () {
-  var houseListController = function ($scope, $stateParams, $state, $controller,commonService) {
+  var houseListController = function ($scope, $stateParams, $state, $controller,commonService,informationService) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
@@ -13,8 +13,9 @@ define([], function () {
       items :[],
       busy : false,
       after: '',
-      page : 0
+      columnId : 0
   }
+
 
     if($stateParams.type=='sale'){
       $scope.title='卖房信息';
@@ -30,7 +31,15 @@ define([], function () {
     }
 
     $scope.houseListInit=function () {
-      $scope.list.items=origin;
+
+      informationService.GetList($stateParams.type,$scope.list.columnId).then(function (d) {
+          if(d.status==200){
+            $scope.list.columnId=d.data.id;
+            $scope.list.items=d.data;
+          }
+      },function () {
+
+      });
     }
 
     $scope.nextPage=function () {
@@ -40,10 +49,12 @@ define([], function () {
       $scope.list.busy=true;
 
       //ajax更新数据
-        $scope.list.items=[];
-        $scope.list.items=origin.concat(add);
+      informationService.GetList($stateParams.type,columnId).then(function (d) {
+        $scope.list.items=$scope.list.items.concat(d.data);
         $scope.list.busy=false;
+      },function () {
 
+      });
 
     }
 
@@ -77,6 +88,6 @@ define([], function () {
 
 
   };
-  houseListController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService'];
+  houseListController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','informationService'];
   app.register.controller('houseListController', houseListController);
 });

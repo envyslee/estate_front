@@ -2,20 +2,32 @@
  * Created by dell on 2016/10/26.
  */
 define([], function () {
-  var outController = function ($scope, $stateParams, $state, $controller,commonService) {
+  var outController = function ($scope, $stateParams, $state, $controller,commonService,userService,informationService) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
       $state: $state
     }));
 
-    $scope.title= $stateParams.type=='sale'?'我要卖房':'我要出租';
+    var type=$stateParams.type;
+    $scope.title= type=='sale'?'我要卖房':'我要出租';
 
     $scope.menushow = false;
     $scope.toggleMenu = function () {
       $scope.menushow = !$scope.menushow;
     }
 
+    $scope.outInfo={
+      village:'',
+      houseType:'',
+      fixture:'',
+      houseProperty:'',
+      address:'',
+      houseArea:'',
+      housePrice:'',
+      phone:'',
+      remarks:''
+    }
 
     $scope.imgSrc={
       i1:'',
@@ -99,8 +111,48 @@ define([], function () {
       // }
     }
 
+    $scope.outInit=function () {
+      commonService.Loading();
+      var villages= commonService.GetCacheObj('village');
+      if (villages==null){
+        userService.GetVillage().then(function (data) {
+          if(data.status==200){
+            commonService.LoadingEnd();
+            $scope.villages=data.data;
+            commonService.CacheObj('village',data.data);
+          }else{
+            alert('获取小区失败，请稍后再试');
+          }
+        },function (e) {
+          commonService.LoadingEnd();
+          alert('获取小区失败，请稍后再试');
+        });
+      }else{
+        commonService.LoadingEnd();
+        $scope.villages=villages;
+      }
+    }
+
+    $scope.outSubmit=function () {
+      if(!commonService.CheckPhone($scope.outInfo.phone)){
+        alert('手机号不正确，请重新输入');
+        return;
+      }
+
+      informationService.SubmitSell($scope.outInfo,type).then(function (d) {
+        if(d.status==200){
+          alert('提交成功，我们的工作人员将尽快给您推荐优质客源');
+          $state.go('house');
+        }else {
+          alert('提交失败，请稍后再试');
+        }
+      },function (e) {
+        alert('提交失败，请稍后再试');
+      });
+    }
+
 
   };
-  outController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService'];
+  outController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','userService','informationService'];
   app.register.controller('outController', outController);
 });
