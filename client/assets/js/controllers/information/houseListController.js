@@ -13,7 +13,8 @@ define([], function () {
       items :[],
       busy : false,
       after: '',
-      columnId : 0
+      page : 0,
+      rows:3
   }
 
 
@@ -32,9 +33,9 @@ define([], function () {
 
     $scope.houseListInit=function () {
 
-      informationService.GetList($stateParams.type,$scope.list.columnId).then(function (d) {
+      informationService.GetList($stateParams.type,$scope.list.page,$scope.list.rows).then(function (d) {
           if(d.status==200){
-            $scope.list.columnId=d.data.id;
+            $scope.list.page++;
             $scope.list.items=d.data;
           }
       },function () {
@@ -49,7 +50,7 @@ define([], function () {
       $scope.list.busy=true;
 
       //ajax更新数据
-      informationService.GetList($stateParams.type,columnId).then(function (d) {
+      informationService.GetList($stateParams.type,$scope.list.page,$scope.list.rows).then(function (d) {
         $scope.list.items=$scope.list.items.concat(d.data);
         $scope.list.busy=false;
       },function () {

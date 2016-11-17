@@ -139,7 +139,7 @@ define([], function () {
         return;
       }
 
-      informationService.SubmitSell($scope.outInfo,type).then(function (d) {
+      informationService.SubmitSell($scope.outInfo,type=='sale'?2:1).then(function (d) {
         if(d.status==200){
           alert('提交成功，我们的工作人员将尽快给您推荐优质客源');
           $state.go('house');

@@ -50,12 +50,13 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
-    var getList=function (sellType,columnId) {
+    var getList=function (sellType,page,rows) {
       var param={
         type:type,
         version:version,
         sellType:sellType,
-        columnId:columnId
+        page:page,
+        rows:rows
       }
       var url=baseUrl+"/api/server/getList";
       return commonService.BasePostRequest(url,param);
