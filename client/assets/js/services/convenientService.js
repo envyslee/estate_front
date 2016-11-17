@@ -7,7 +7,43 @@ define([], function () {
   var convenientService = function ($resource, $q,commonService) {
     var baseUrl = app.service.baseUrl;
 
+    var type=app.service.type;
+    var version=app.service.version;
+
+    var adviceSubmit=function (info) {
+      var param={
+        type:type,
+        version:version,
+        name:info.name,
+        phone:info.phone,
+        content:info.content
+      }
+      var url=baseUrl+"/api/server/submitAdvice";
+      return commonService.BasePostRequest(url,param);
+    }
+
+
+    var getServiceList=function () {
+
+    }
+
+    var getPrice=function (serviceType) {
+      var param={
+        type:type,
+        version:version,
+        serviceType:serviceType
+      }
+      var url=baseUrl+"/api/server/getPrice";
+      return commonService.BasePostRequest(url,param);
+    }
+
+    return{
+      AdviceSubmit:adviceSubmit,
+      GetServiceList:getServiceList,
+      GetPrice:getPrice
+    }
+
   }
-  convenientService.$inject = ['$resource', '$q','commonService'];
-    app.register.factory('userService', convenientService);
+    convenientService.$inject = ['$resource', '$q','commonService'];
+    app.register.factory('convenientService', convenientService);
   });

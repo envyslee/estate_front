@@ -2,30 +2,30 @@
 name: wash
 url: /wash/:userId
 controller: washController
-dependencies: controllers/washController,services/commonService
+dependencies: controllers/washController,services/commonService,services/commonService,services/convenientService
 ---
-<div class="ui-container">
+<div class="ui-container" ng-init="wsInit()">
   <div class="primary title-bar" style="height: 3rem">
     <div class="center title">洗衣服务</div>
 
   </div>
-  <div class="grid-block vertical" >
+  <div class="grid-block vertical serviceImg" >
     <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter()">
-      <img src="assets/images/estate-img/icon_c_03.png">
+      <img  src="assets/images/estate-img/yidaixi.png">
       <strong style="margin: auto 2rem">一袋洗</strong>
     </div>
     <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/icon_c_05.png">
+      <img src="assets/images/estate-img/baoyuexi.png">
       <strong  style="margin: auto 2rem">包月洗</strong>
     </div>
     <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/icon_c_01.png">
+      <img src="assets/images/estate-img/danjianxi.png">
       <strong  style="margin: auto 2rem">单件洗</strong>
     </div>
   </div>
 
-  <a class="float-circle-cash"  zf-open="priceModal" ></a>
-  <div zf-modal="" id="priceModal" class="dialog" >
+  <a class="float-circle-cash"  ng-click="openPmWs()"></a>
+  <div zf-modal="" id="priceModalWs" class="dialog" >
     <table class="gridtable">
       <thead>
       <tr>
@@ -34,17 +34,9 @@ dependencies: controllers/washController,services/commonService
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>服务内容1</td>
-        <td>价格1</td>
-      </tr>
-      <tr>
-        <td>服务内容2</td>
-        <td>价格2</td>
-      </tr>
-      <tr>
-        <td>服务内容3</td>
-        <td>价格3</td>
+      <tr ng-repeat="item in priceInfo">
+        <td>{{::item.name}}</td>
+        <td>{{::item.price}}</td>
       </tr>
       </tbody>
     </table>

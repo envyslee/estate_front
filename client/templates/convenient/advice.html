@@ -2,7 +2,7 @@
 name: advice
 url: /advice
 controller: adviceController
-dependencies: controllers/adviceController,services/commonService
+dependencies: controllers/adviceController,services/commonService,services/convenientService
 ---
 <div class="ui-container">
   <div class="primary title-bar">
@@ -11,20 +11,20 @@ dependencies: controllers/adviceController,services/commonService
     <!--<span class="right"><a href="#">Right</a></span>-->
   </div>
 
-  <form style="margin: 1rem 1rem 0 1rem">
+  <form style="margin: 1rem 1rem 0 1rem" id="adForm" name="adForm">
     <label>
       姓名
-      <input type="text" placeholder="请输入您的姓名" required>
+      <input type="text" placeholder="请输入您的姓名" ng-model="adviceInfo.name" required>
     </label>
     <label>
     电话
-    <input type="text" placeholder="请输入您的电话号码" required>
+    <input type="text" placeholder="请输入您的电话号码" ng-model="adviceInfo.phone" required>
   </label>
     <label>
       建议
-      <textarea placeholder="请输入您的建议" rows="5" required></textarea>
+      <textarea placeholder="请输入您的建议" rows="5" ng-model="adviceInfo.content" required></textarea>
     </label>
-    <a class="expand button" href="#">提交</a>
+    <a class="expand button" ng-click="adviceSubmit()" ng-class="{true:'disabled',false:''}[adForm.$invalid]" >提交</a>
   </form>
 </div>
 
