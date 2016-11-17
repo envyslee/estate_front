@@ -3,21 +3,36 @@
  */
 
 define([], function () {
-  var enteringController = function ($scope, $stateParams, $state, $controller,commonService) {
+  var enteringController = function ($scope, $stateParams, $state, $controller,commonService,userService,convenientService) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
       $state: $state
     }));
 
-    var from=$stateParams.from;
-    if(from=='inFix'){
-      $scope.title="室内报修";
-    }else if(from=='wash'){
-      $scope.title="洗衣服务";
-    }else if(from=='housekeeping'){
-      $scope.title="家政服务";
+    $scope.enterInfo={
+      village:'',
+      floor:'',
+      house:'',
+      name:'',
+      phone:'',
+      content:'',
+      userId:$stateParams.userId
     }
+
+    $scope.from=$stateParams.from;
+    if( $scope.from=='inFix'){
+      $scope.title="室内报修";
+      $scope.enterInfo.typeId=2;
+    }else if( $scope.from=='wash'){
+      $scope.title="洗衣服务";
+      $scope.enterInfo.typeId=3;
+    }else if( $scope.from=='housekeeping'){
+      $scope.title="家政服务";
+      $scope.enterInfo.typeId=1;
+    }
+
+
 
     $scope.imgSrc={
       i1:'',
@@ -79,7 +94,49 @@ define([], function () {
       imgIndex++;
     }
 
+    $scope.enterInit=function () {
+      commonService.Loading();
+      var villages= commonService.GetCacheObj('village');
+      if (villages==null){
+        userService.GetVillage().then(function (data) {
+          if(data.status==200){
+            commonService.LoadingEnd();
+            $scope.villages=data.data;
+            commonService.CacheObj('village',data.data);
+          }else{
+            alert('获取小区失败，请稍后再试');
+          }
+        },function (e) {
+          commonService.LoadingEnd();
+          alert('获取小区失败，请稍后再试');
+        });
+      }else{
+        $scope.villages=villages;
+      }
+    }
+
+    $scope.enterSubmit=function () {
+      if(!commonService.CheckPhone($scope.enterInfo.phone)){
+        alert('手机号不正确，请重新输入');
+        $scope.enterInfo.phone='';
+        return;
+      }
+      commonService.Loading();
+      convenientService.SubmitService($scope.enterInfo).then(function (d) {
+        commonService.LoadingEnd();
+        if(d.status==200){
+          alert('提交成功');
+        }else {
+          alert('提交失败，请稍后再试');
+        }
+      },function () {
+        commonService.LoadingEnd();
+        alert('提交失败，请稍后再试');
+      })
+
+    }
+
   };
-  enteringController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService'];
+  enteringController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','userService','convenientService'];
   app.register.controller('enteringController', enteringController);
 });

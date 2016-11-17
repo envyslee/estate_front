@@ -37,10 +37,28 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var submitService=function (info) {
+      var param={
+        type:type,
+        version:version,
+        areaId:info.village.id,
+        floor:info.floor,
+        house:info.house,
+        name:info.name,
+        phone:info.phone,
+        content:info.content,
+        userId:info.userId,
+        typeId:info.typeId
+      }
+      var url=baseUrl+"/api/server/submitService";
+      return commonService.BasePostRequest(url,param);
+    }
+
     return{
       AdviceSubmit:adviceSubmit,
       GetServiceList:getServiceList,
-      GetPrice:getPrice
+      GetPrice:getPrice,
+      SubmitService:submitService
     }
 
   }

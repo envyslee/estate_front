@@ -2,9 +2,9 @@
 name: entering
 url: /entering/:from/:userId
 controller: enteringController
-dependencies: controllers/enteringController,services/commonService
+dependencies: controllers/enteringController,services/commonService,services/userService,services/convenientService
 ---
-<div class="ui-container">
+<div class="ui-container" ng-init="enterInit()">
   <div class="primary title-bar" style="height: 3rem">
     <div class="center title">{{title}}</div>
 
@@ -14,36 +14,32 @@ dependencies: controllers/enteringController,services/commonService
 
     <label>
       选择小区</label>
-    <select  required>
-      <option value="">碧云山庄</option>
-      <option value="">常福名苑</option>
-      <option value="">海上一品</option>
-      <option value="">汇金广场</option>
+    <select name="" id="" ng-model="enterInfo.village" ng-options="x.areaName for x in villages">
     </select>
     <label>
       楼栋
-      <input type="text" placeholder="请输入您的楼栋" required>
+      <input type="text" placeholder="请输入您的楼栋" ng-model="enterInfo.floor" required>
     </label>
     <label>
       室号
-      <input type="text" placeholder="请输入您的室号" required>
+      <input type="text" placeholder="请输入您的室号" ng-model="enterInfo.house" required>
     </label>
     <label>
       姓名
-      <input type="text" placeholder="请输入您的姓名" required>
+      <input type="text" placeholder="请输入您的姓名" ng-model="enterInfo.name" required>
     </label>
     <label>
       电话
-      <input type="text" placeholder="请输入您的电话号码" required>
+      <input type="text" placeholder="请输入您的电话号码" ng-model="enterInfo.phone" required>
     </label>
     <label>
       备注
-      <textarea placeholder="请输入您的要求" rows="5" required></textarea>
+      <textarea placeholder="请输入您的要求" rows="5" ng-model="enterInfo.content"></textarea>
     </label>
 
-    <label>
+    <label ng-show="from=='inFix'">
       最多上传三张图片</label>
-    <div class="grid-block" >
+    <div class="grid-block" ng-show="from=='inFix'">
       <input id="p1"  type="file" capture="camera" accept="image/*" style="display: none" input-on-change="uploadImg" required>
       <label for="p1" style="width: 4.4rem" ng-click="labelClick()">
         <div class="za_picture" >
@@ -66,7 +62,7 @@ dependencies: controllers/enteringController,services/commonService
         </div>
       </div>
     </div>
-    <a class="expand button" ng-class="{true:'disabled',false:''}[enterForm.$invalid]">提交</a>
+    <a class="expand button" ng-class="{true:'disabled',false:''}[enterForm.$invalid]" ng-click="enterSubmit()">提交</a>
   </form>
   <div class="showMax" ng-show="chooseImg!=null&&chooseImg!=''" ng-click="closeMax()">
     <span >
