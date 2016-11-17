@@ -2,7 +2,7 @@
 name: houseList
 url: /houseList/:type
 controller: houseListController
-dependencies: controllers/houseListController,services/commonService
+dependencies: controllers/houseListController,services/commonService,services/informationService
 ---
 <div class="ui-container" ng-init="houseListInit()">
   <div class="primary title-bar">
@@ -39,7 +39,7 @@ dependencies: controllers/houseListController,services/commonService
         </div>
       </a>
     </div>
-    <div ng-show="list.busy">正在加载...</div>
+    <div ng-show="list.busy" style="text-align: center;margin-top: 4px">正在加载...</div>
   </div>
 
   <a class="float-circle"  href="javascript:scroll(0,0)"></a>

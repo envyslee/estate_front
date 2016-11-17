@@ -1,8 +1,8 @@
 ---
 name: reserve
-url: /reserve
+url: /reserve/:houseId/:from
 controller: reserveController
-dependencies: controllers/reserveController,services/commonService
+dependencies: controllers/reserveController,services/commonService,services/informationService
 ---
 <div class="ui-container">
   <div class="primary title-bar">
@@ -28,7 +28,7 @@ dependencies: controllers/reserveController,services/commonService
     </label>
     <p class="alert-font"><span style="color: red">*</span>提交后，我们的工作人员将尽快联系您看房</p>
 
-    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[reserveForm.$invalid]">提交</a>
+    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[reserveForm.$invalid]" ng-click="watchSubmit()">提交</a>
   </form>
 
 </div>

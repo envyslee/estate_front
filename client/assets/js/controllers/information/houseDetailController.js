@@ -29,8 +29,23 @@ define([], function () {
       $state.go('gallery',{from:from,id:id});
     }
 
+    $scope.goReserve=function () {
+      $state.go('reserve',{houseId:id,from:from});
+    }
+
     $scope.detailInit=function () {
-      
+      commonService.Loading();
+        informationService.GetDetail(id).then(function (data) {
+          commonService.LoadingEnd();
+          if(data.status==200){
+            $scope.detail=data.data;
+          }else{
+            alert('获取信息失败，请稍后再试')
+          }
+        },function () {
+          commonService.LoadingEnd();
+          alert('获取信息失败，请稍后再试')
+        });
     }
 
 

@@ -50,15 +50,53 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var submitBuy=function (inInfo) {
+        var param={
+          type:type,
+          version:version,
+          buyType:inInfo.buyType,
+          areaId:inInfo.village.id,
+          houseArea:inInfo.houseArea,
+          housePrice:inInfo.housePrice,
+          name:inInfo.name,
+          phone:inInfo.phone,
+          remarks:inInfo.remarks
+        }
+      var url=baseUrl+"/api/server/submitBuy";
+      return commonService.BasePostRequest(url,param);
+    }
+
     var getList=function (sellType,page,rows) {
       var param={
         type:type,
         version:version,
-        sellType:sellType,
+        sellType:sellType=='sale'?1:2,
         page:page,
         rows:rows
       }
       var url=baseUrl+"/api/server/getList";
+      return commonService.BasePostRequest(url,param);
+    }
+
+    var getDetail=function (houseId) {
+      var param={
+        type:type,
+        version:version,
+        houseId:houseId
+      }
+      var url=baseUrl+"/api/server/getDetail";
+      return commonService.BasePostRequest(url,param);
+    }
+
+    var watchHouse=function (info) {
+      var param={
+        type:type,
+        version:version,
+        name:info.name,
+        phone:info.phone,
+        houseId:info.houseId
+      }
+      var url=baseUrl+"/api/server/watchHouse";
       return commonService.BasePostRequest(url,param);
     }
 
@@ -67,7 +105,10 @@ define([], function () {
       GetTenement:getTenement,
       GetSale:getSale,
       SubmitSell:submitSell,
-      GetList:getList
+      GetList:getList,
+      WatchHouse:watchHouse,
+      GetDetail:getDetail,
+      SubmitBuy:submitBuy
     }
 
   }

@@ -2,7 +2,7 @@
 name: houseDetail
 url: /houseDetail/:from/:id
 controller: houseDetailController
-dependencies: controllers/houseDetailController,services/commonService
+dependencies: controllers/houseDetailController,services/commonService,services/informationService
 ---
 <div class="ui-container" ng-init="detailInit()">
   <div class="primary title-bar">
@@ -23,7 +23,7 @@ dependencies: controllers/houseDetailController,services/commonService
         <p>位置</p>
       </div>
       <div class="grid-block  small-10">
-        <input type="text" required value="1111"/>
+        <input type="text" required value="{{::detail.address}}" readonly/>
       </div>
     </div>
 
@@ -32,7 +32,7 @@ dependencies: controllers/houseDetailController,services/commonService
         <p>户型</p>
       </div>
       <div class="grid-block small-10">
-        <input type="text" required value="2222"/>
+        <input type="text" required value="{{::detail.houseType}}" readonly/>
       </div>
     </div>
 
@@ -41,7 +41,7 @@ dependencies: controllers/houseDetailController,services/commonService
         <p>面积</p>
       </div>
       <div class="grid-block small-10">
-        <input type="text" required value="{{}}"/>
+        <input type="text" required value="{{::detail.houseArea}}㎡" readonly/>
       </div>
     </div>
 
@@ -50,7 +50,7 @@ dependencies: controllers/houseDetailController,services/commonService
         <p>价格</p>
       </div>
       <div class="grid-block small-10">
-        <input type="text" required value="{{}}"/>
+        <input type="text" required value="{{::detail.housePrice}}元" readonly/>
       </div>
     </div>
 
@@ -59,7 +59,7 @@ dependencies: controllers/houseDetailController,services/commonService
         <p style="padding-top: 4px;">备注</p>
       </div>
       <div class="grid-block small-10">
-        <textarea style="border: none" rows="5" disabled>efawefjawijfweainfiwaenfiow</textarea>
+        <textarea style="border: none" rows="5" disabled>{{::detail.remarks}}</textarea>
       </div>
     </div>
 
@@ -75,7 +75,7 @@ dependencies: controllers/houseDetailController,services/commonService
     </div>
 
 
-    <a class="warning button expand" ui-sref="reserve" style="margin-top: 1rem">我要看房</a>
+    <a class="warning button expand"  ng-click="goReserve()" style="margin-top: 1rem">我要看房</a>
   </div>
 
 
