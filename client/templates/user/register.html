@@ -11,7 +11,7 @@ dependencies: controllers/registerController,services/commonService,services/use
   </div>
   <form style="margin: 1rem 1rem 0 1rem" id="registerForm" name="registerForm">
     <label>小区</label>
-    <select name="" id="" ng-model="userInfo.village" ng-options="x.areaName for x in villages">
+    <select  name="" id="" ng-model="userInfo.village" ng-options="x.areaName for x in villages" required>
     </select>
     <label>
       楼栋
@@ -31,7 +31,7 @@ dependencies: controllers/registerController,services/commonService,services/use
     </label>
     <label>
       身份证
-      <input type="text" placeholder="请输入身份证号码" maxlength="15" ng-model="userInfo.idNo" required>
+      <input type="text" placeholder="请输入身份证号码" maxlength="18" ng-model="userInfo.idNo" required>
     </label>
     <label>
       手机
@@ -41,15 +41,16 @@ dependencies: controllers/registerController,services/commonService,services/use
       昵称
       <input type="text" placeholder="请输入昵称" ng-model="userInfo.nickName" required>
     </label>
-    <label>
+    <label ng-if="type=='register'">
       密码
       <input type="password" placeholder="请输入密码" maxlength="12" ng-model="userInfo.pwd" required>
     </label>
-    <label>
+    <label  ng-if="type=='register'">
       确认密码
       <input type="password" placeholder="请再次输入密码" maxlength="12" ng-model="userInfo.pwdAgain" required>
     </label>
-    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[registerForm.$invalid]" ng-click="registerSubmit()">提交</a>
+    <a ng-if="type=='register'" class="expand button" ng-class="{true:'disabled',false:''}[registerForm.$invalid]" ng-click="registerSubmit()">提交</a>
+    <a ng-if="type=='modify'" class="expand button"  ng-click="registerSubmit()">提交</a>
   </form>
 
 </div>

@@ -28,6 +28,34 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var modify=function (data) {
+      var param={
+        type:type,
+        version:version,
+        areaId:data.village.id,
+        floor:data.floor,
+        unit:data.unit,
+        house:data.house,
+        customName:data.name,
+        idNo:data.idNo,
+        phone:data.phone,
+        niceName:data.nickName,
+        token:sessionStorage.getItem('token')
+      }
+      var url=baseUrl+"/api/user/modify";
+      return commonService.BasePostRequest(url,param);
+    }
+
+    var getUserInfo=function (token) {
+      var param={
+        type:type,
+        version:version,
+        token:token
+      }
+      var url=baseUrl+"/api/user/getUserInfo";
+      return commonService.BasePostRequest(url,param);
+    }
+
     var login=function (data) {
       var param={
         type:type,
@@ -83,11 +111,13 @@ define([], function () {
 
     return{
       Register:register,
+      Modify:modify,
       Login:login,
       GetVillage:getVillage,
       Logout:logout,
       CheckIdentity:checkIdentity,
-      ResetPwd:resetPwd
+      ResetPwd:resetPwd,
+      GetUserInfo:getUserInfo
     }
   }
 

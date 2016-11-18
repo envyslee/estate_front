@@ -24,34 +24,63 @@ define([], function () {
 
 
 
-    var type=$stateParams.type;
-    if(type=='register'){
+    $scope.type=$stateParams.type;
+    if($scope.type=='register'){
       $scope.title='用户注册';
-    }else if(type=='modify') {
+    }else if($scope.type=='modify') {
       $scope.title='信息修改';
     }
 
     $scope.registerInit=function () {
-      commonService.Loading();
       var villages= commonService.GetCacheObj('village');
       if (villages==null){
         userService.GetVillage().then(function (data) {
           if(data.status==200){
-            commonService.LoadingEnd();
             $scope.villages=data.data;
             commonService.CacheObj('village',data.data);
+
+            if($scope.type=='modify'){
+              if(sessionStorage.getItem('token')==null){
+                alert('您的登录已失效，请重新登录');
+                $state.go('login');
+              }else {
+                getUserInfo();
+              }
+            }
           }else{
             alert('获取小区失败，请稍后再试');
           }
         },function (e) {
-          commonService.LoadingEnd();
           alert('获取小区失败，请稍后再试');
         });
       }else{
         $scope.villages=villages;
+        getUserInfo();
       }
+    }
 
-
+    var getUserInfo=function () {
+      userService.GetUserInfo(sessionStorage.getItem('token')).then(function (data) {
+        if(data.status==200){
+          var c=data.data;
+          $scope.userInfo=c;
+          for(var i=0;i<$scope.villages.length;i++){
+            if(i==c.areaId){
+              $scope.userInfo.village=$scope.villages[i];
+              break;
+            }
+          }
+          $scope.userInfo.name=c.customName;
+          $scope.userInfo.nickName=c.niceName;
+        }else{
+          alert(data.message);
+          if(data.status==1){
+            $state.go('login');
+          }
+        }
+      },function () {
+        alert('获取个人信息失败，请重新再试');
+      })
     }
 
     $scope.registerSubmit=function () {
@@ -63,6 +92,7 @@ define([], function () {
         alert('身份证号格式不正确，请重新输入');
         return;
       }
+      if($scope.type=='register'){
       if($scope.userInfo.pwd!=$scope.userInfo.pwdAgain){
         alert('您两次输入的密码不一致，请重新输入');
         $scope.userInfo.pwd='';
@@ -76,19 +106,36 @@ define([], function () {
           return;
         }
       }
+      }
       commonService.Loading();
-      userService.Register($scope.userInfo).then(function (data) {
-        commonService.LoadingEnd();
-        if(data.status==200){
-          alert('恭喜您注册成功，立即去登录！');
-          $state.go('login');
-        }else {
-          alert(data.message);
-        }
-      },function () {
-        commonService.LoadingEnd();
-        alert('注册失败，请稍后再试');
-      });
+      if($scope.type=='register'){
+        userService.Register($scope.userInfo).then(function (data) {
+          commonService.LoadingEnd();
+          if(data.status==200){
+            alert('恭喜您注册成功，立即去登录！');
+            $state.go('login');
+          }else {
+            alert(data.message);
+          }
+        },function () {
+          commonService.LoadingEnd();
+          alert('注册失败，请稍后再试');
+        });
+      }else if($scope.type=='modify'){
+        userService.Modify($scope.userInfo).then(function (data) {
+          commonService.LoadingEnd();
+          if(data.status==200){
+            alert('修改信息成功，立即去登录！');
+            $state.go('login');
+          }else {
+            alert(data.message);
+          }
+        },function () {
+          commonService.LoadingEnd();
+          alert('注册失败，请稍后再试');
+        });
+      }
+
     }
 
 

@@ -52,6 +52,7 @@ var app = null;
 
     //Post param
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+    $httpProvider.defaults.withCredentials = true;
 
     $httpProvider.defaults.transformRequest = function (data) {
       if (angular.isObject(data)) {
