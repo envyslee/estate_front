@@ -54,11 +54,29 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var saveImg=function (data,contentId,imgType) {
+      var a1=data.b1.split(',');
+      var a2=data.b2.split(',');
+      var a3=data.b3.split(',');
+      var param={
+        type:type,
+        version:version,
+        im1:a1[1],
+        im2:a2[1],
+        im3:a3[1],
+        imgType:imgType,
+        contentId:contentId
+      }
+      var url=baseUrl+"/api/server/savePic";
+      return commonService.BasePostRequest(url,param);
+    }
+
     return{
       AdviceSubmit:adviceSubmit,
       GetServiceList:getServiceList,
       GetPrice:getPrice,
-      SubmitService:submitService
+      SubmitService:submitService,
+      SaveImg:saveImg
     }
 
   }

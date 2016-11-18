@@ -30,7 +30,7 @@ dependencies: controllers/enteringController,services/commonService,services/use
     </label>
     <label>
       电话
-      <input type="text" placeholder="请输入您的电话号码" ng-model="enterInfo.phone" required>
+      <input type="text" placeholder="请输入您的电话号码"  maxlength="11" ng-model="enterInfo.phone" required>
     </label>
     <label>
       备注
@@ -62,7 +62,8 @@ dependencies: controllers/enteringController,services/commonService,services/use
         </div>
       </div>
     </div>
-    <a class="expand button" ng-class="{true:'disabled',false:''}[enterForm.$invalid]" ng-click="enterSubmit()">提交</a>
+    <a class="expand button"  ng-click="enterSubmit()">提交</a>
+    <!--<a class="expand button" ng-class="{true:'disabled',false:''}[enterForm.$invalid]" ng-click="enterSubmit()">提交</a>-->
   </form>
   <div class="showMax" ng-show="chooseImg!=null&&chooseImg!=''" ng-click="closeMax()">
     <span >
@@ -70,3 +71,5 @@ dependencies: controllers/enteringController,services/commonService,services/use
       </span>
   </div>
 </div>
+
+<canvas id="uploadImg" style="display: none" ></canvas>

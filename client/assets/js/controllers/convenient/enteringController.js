@@ -37,7 +37,10 @@ define([], function () {
     $scope.imgSrc={
       i1:'',
       i2:'',
-      i3:''
+      i3:'',
+      b1:'',
+      b2:'',
+      b3:''
     }
 
     var imgIndex=1;
@@ -73,10 +76,13 @@ define([], function () {
     $scope.delImg=function (index) {
       if(index==1){
         $scope.imgSrc.i1='';
+        $scope.imgSrc.b1='';
       }else if(index==2){
+        $scope.imgSrc.i2='';
         $scope.imgSrc.i2='';
       }else if(index==3){
         $scope.imgSrc.i3='';
+        $scope.imgSrc.b3='';
       }
       imgIndex--;
     }
@@ -85,13 +91,39 @@ define([], function () {
       var file = event.target.files[0];
       if($scope.imgSrc.i1==''){
         $scope.imgSrc.i1=window.URL.createObjectURL(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(){
+          $scope.imgSrc.b1=zipPic(this.result);
+        }
       }else  if($scope.imgSrc.i2==''){
         $scope.imgSrc.i2=window.URL.createObjectURL(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(){
+          $scope.imgSrc.b2=zipPic(this.result);
+        }
       }else {
         $scope.imgSrc.i3=window.URL.createObjectURL(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(){
+          $scope.imgSrc.b3=zipPic(this.result);
+        }
       }
       $scope.$apply();
       imgIndex++;
+    }
+
+    var zipPic=function (result) {
+      var canvas=document.getElementById("uploadImg");
+      var cxt=canvas.getContext('2d');
+      var img=new Image();
+      img.src= result;
+      canvas.width=640;
+      canvas.height=640*(img.height/img.width);
+      cxt.drawImage(img,0,0,640,canvas.height);
+      return canvas.toDataURL("image/jpeg",0.9);
     }
 
     $scope.enterInit=function () {
@@ -123,16 +155,31 @@ define([], function () {
       }
       commonService.Loading();
       convenientService.SubmitService($scope.enterInfo).then(function (d) {
-        commonService.LoadingEnd();
         if(d.status==200){
-          alert('提交成功');
+          var id=d.data;
+          if($scope.imgSrc.i1!=''||$scope.imgSrc.i2!=''||$scope.imgSrc.i3!=''){
+            convenientService.SaveImg($scope.imgSrc,id,2).then(function (data) {
+              commonService.LoadingEnd();
+              if(data.status==200){
+                alert('提交成功');
+              }else {
+                alert('图片上传失败');
+              }
+            },function () {
+              commonService.LoadingEnd();
+              alert('图片上传失败');
+            })
+          }
         }else {
+          commonService.LoadingEnd();
           alert('提交失败，请稍后再试');
         }
       },function () {
         commonService.LoadingEnd();
         alert('提交失败，请稍后再试');
       })
+
+
 
     }
 
