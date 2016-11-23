@@ -1,0 +1,53 @@
+---
+name: outFixDetail
+url: /outFixDetail/:id
+controller: outFixDetailController
+dependencies: controllers/outFixDetailController,services/commonService,services/convenientService
+---
+<div class="ui-container" ng-init="outFixDetailInit()">
+  <div class="primary title-bar" style="height: 3rem">
+    <div class="center title">报修详情</div>
+  </div>
+
+  <div class="grid-block align-center creditCard-div">
+    <div class="grid-block small-2">
+      <p>报修人</p>
+    </div>
+    <div class="grid-block small-10">
+      <input type="text" required value="{{::detailInfo.name}}" readonly/>
+    </div>
+  </div>
+
+  <div class="grid-block align-center creditCard-div">
+    <div class="grid-block small-2">
+      <p>小区</p>
+    </div>
+    <div class="grid-block small-10">
+      <input type="text" required value="{{::detailInfo.area}}" readonly/>
+    </div>
+  </div>
+
+  <div class="grid-block align-center creditCard-div" style="height: 100px">
+    <div class="grid-block small-2">
+      <p style="padding-top: 4px;">备注</p>
+    </div>
+    <div class="grid-block small-10">
+      <textarea style="border: none" rows="5" disabled>{{::detailInfo.content}}</textarea>
+    </div>
+  </div>
+
+  <div class="grid-block">
+      <img ng-repeat="p in detailInfo.imgs" src="{{::p}}">
+  </div>
+
+
+  <div class="grid-block align-center creditCard-div" style="height: 100px">
+    <div class="grid-block small-2">
+      <p style="padding-top: 4px;color: #c2680d;font-weight: bold">官方回复</p>
+    </div>
+    <div class="grid-block small-10">
+      <textarea style="border: none" rows="5" disabled>{{::detailInfo.doContent}}</textarea>
+    </div>
+  </div>
+
+</div>

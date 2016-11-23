@@ -71,12 +71,46 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var getOutFixList=function () {
+        var param={
+          type:type,
+          version:version,
+        }
+      var url=baseUrl+"/api/server/getOutFixList";
+      return commonService.BasePostRequest(url,param);
+    }
+
+    var getOutFixDetail=function (id) {
+      var param={
+        type:type,
+        version:version,
+        id:id
+      }
+      var url=baseUrl+"/api/server/getOutFixDetail";
+      return commonService.BasePostRequest(url,param);
+    }
+
+    var submitOutFix=function (data) {
+      var param={
+        type:type,
+        version:version,
+        customerId:data.customerId,
+        content:data.content,
+        areaId:data.areaId
+      }
+      var url=baseUrl+"/api/server/submitOutFix";
+      return commonService.BasePostRequest(url,param);
+    }
+
     return{
       AdviceSubmit:adviceSubmit,
       GetServiceList:getServiceList,
       GetPrice:getPrice,
       SubmitService:submitService,
-      SaveImg:saveImg
+      SaveImg:saveImg,
+      GetOutFixList:getOutFixList,
+      GetOutFixDetail:getOutFixDetail,
+      SubmitOutFix:submitOutFix
     }
 
   }
