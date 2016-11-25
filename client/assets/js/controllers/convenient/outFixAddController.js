@@ -19,7 +19,19 @@ define([], function () {
     $scope.outFixSubmit=function () {
       convenientService.SubmitOutFix($scope.fixInfo).then(function (data) {
         if(data.status==200){
-
+          if( $scope.imgSrc.b1==''&& $scope.imgSrc.b2==''&& $scope.imgSrc.b3==''){
+            $state.go('outFix');
+          }else {
+            convenientService.SaveImg( $scope.imgSrc).then(function () {
+              if(data.status==200){
+                $state.go('outFix');
+              }else{
+                alert('保存图片失败，请稍后再试');
+              }
+            },function (e) {
+              alert('保存图片失败，请稍后再试');
+            })
+          }
         }
       },function (e) {
         alert('提交失败，请稍后再试')
