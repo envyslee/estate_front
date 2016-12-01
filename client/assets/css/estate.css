@@ -209,6 +209,15 @@ table.gridtable td {
   height:30%;
 }
 
+.selectBg{
+  border:none;
+  background: white;
+}
+
+.selectBg:hover{
+  background: white;
+}
+
 
 /* Font-face
 ============================================================================= */

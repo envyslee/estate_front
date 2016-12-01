@@ -7,7 +7,7 @@ dependencies: controllers/outFixController,services/commonService,services/conve
 <div class="ui-container" ng-init="outFixInit()">
   <div class="primary title-bar" style="height: 3rem">
     <div class="center title">公共报修</div>
-    <span class="right"><a ui-sref="">新增报修</a></span>
+    <span class="right"><a ui-sref="outFixAdd">新增报修</a></span>
   </div>
 
   <div class="grid-block" ng-repeat="t in fixList" style="border-bottom: 1px solid #ccc">
@@ -16,7 +16,7 @@ dependencies: controllers/outFixController,services/commonService,services/conve
       <div class="grid-block  vertical " style="margin: auto 0">
         <div class="grid-block">
           <strong >{{t.userName}}</strong>
-          <img ng-if="t.status==1" src="assets/images/estate-img/button_xinbaoxu@3x.png" style="float: right">
+          <img ng-if="t.status==1" src="assets/images/estate-img/button_xinbaoxiu@3x.png" style="float: right">
           <img ng-if="t.status==2" src="assets/images/estate-img/button_yijiejue@3x.png" style="float: right">
         </div>
         <div class="grid-block">

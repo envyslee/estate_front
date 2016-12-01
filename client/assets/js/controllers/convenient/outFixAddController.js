@@ -2,7 +2,7 @@
  * Created by dell on 2016/11/23.
  */
 define([], function () {
-  var outFixAddController = function ($scope, $stateParams, $state, $controller,commonService,convenientService) {
+  var outFixAddController = function ($scope, $stateParams, $state, $controller,commonService,convenientService,userService) {
     angular.extend(this, $controller('DefaultController', {
       $scope: $scope,
       $stateParams: $stateParams,
@@ -15,6 +15,29 @@ define([], function () {
       content:'',
       areaId:''
     }
+
+    $scope.ofaInit=function () {
+      commonService.Loading();
+      var villages= commonService.GetCacheObj('village');
+      if (villages==null){
+        userService.GetVillage().then(function (data) {
+          if(data.status==200){
+            commonService.LoadingEnd();
+            $scope.villages=data.data;
+            commonService.CacheObj('village',data.data);
+          }else{
+            alert('获取小区失败，请稍后再试');
+          }
+        },function (e) {
+          commonService.LoadingEnd();
+          alert('获取小区失败，请稍后再试');
+        });
+      }else{
+        commonService.LoadingEnd();
+        $scope.villages=villages;
+      }
+    }
+
 
     $scope.outFixSubmit=function () {
       convenientService.SubmitOutFix($scope.fixInfo).then(function (data) {
@@ -133,6 +156,6 @@ define([], function () {
     }
 
   };
-  outFixAddController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','convenientService'];
+  outFixAddController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','convenientService','userService'];
   app.register.controller('outFixAddController', outFixAddController);
 });

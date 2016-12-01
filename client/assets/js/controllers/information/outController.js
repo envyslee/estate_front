@@ -34,7 +34,8 @@ define([], function () {
       i2:'',
       i3:''
     }
-
+    
+ 
     var imgIndex=1;
 
     $scope.labelClick=function () {

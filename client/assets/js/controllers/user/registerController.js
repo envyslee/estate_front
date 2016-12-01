@@ -55,7 +55,14 @@ define([], function () {
         });
       }else{
         $scope.villages=villages;
-        getUserInfo();
+        if($scope.type=='modify'){
+          if(sessionStorage.getItem('token')==null){
+            alert('您的登录已失效，请重新登录');
+            $state.go('login');
+          }else {
+            getUserInfo();
+          }
+        }
       }
     }
 
