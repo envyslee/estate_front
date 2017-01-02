@@ -16,6 +16,7 @@
   <script src="assets/js/app.js"></script>
   <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
   <script src='assets/js/ng-infinite-scroll.js'></script>
+  <!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
 </head>
 <body ontouchstart >
 <div ui-view >
@@ -24,17 +25,46 @@
 <v-loading id="loading"></v-loading>
 </body>
 <script language="javascript">
-  window.addEventListener("popstate", function (e) {
-    if (e.state == null) {
-      var state = {
-        title: "title",
-        url: window.location.hash
-      };
-      window.history.pushState(state, "title", window.location.hash);
-    }
-    else {
-      WeixinJSBridge.call('closeWindow');
-    }
-  });
+//  window.addEventListener("popstate", function (e) {
+//    if (e.state == null) {
+//      var state = {
+//        title: "title",
+//        url: window.location.hash
+//      };
+//      window.history.pushState(state, "title", window.location.hash);
+//    }
+//    else {
+//      WeixinJSBridge.call('closeWindow');
+//    }
+//  });
+
+//$.ajax({
+//  type : "POST",
+//  url : "http://localhost:8080/wy/api/open/getSign",
+//  //data : ,
+//  success : function(result) {
+//    if ( result.status==200 ) {
+//      var data=JSON.parse(result);
+//      var timestamp=data.timestamp;
+//      var sign=data.sign;
+//      wx.config({
+//        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+//        appId: 'wx1194e9d11bf8833d', // 必填，公众号的唯一标识
+//        timestamp:timestamp, // 必填，生成签名的时间戳
+//        nonceStr: 'nicholas', // 必填，生成签名的随机串
+//        signature: sign,// 必填，签名，见附录1
+//        jsApiList: ['chooseImage','previewImage','uploadImage'] // 必填，需要使用的JS接口列表
+//      });
+//    } else {
+//      alert('jsapi_ticket签名错误');
+//    }
+//  },
+//  error:function (e) {
+//    console.log(e);
+//    alert('jsapi_ticket签名错误');
+//  }
+//});
+
+
 </script>
 </html>

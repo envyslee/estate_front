@@ -7,14 +7,15 @@ dependencies: controllers/outFixDetailController,services/commonService,services
 <div class="ui-container" ng-init="outFixDetailInit()">
   <div class="primary title-bar" style="height: 3rem">
     <div class="center title">报修详情</div>
+    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
   </div>
 
-  <div class="grid-block align-center creditCard-div">
+  <div class="grid-block align-center creditCard-div" >
     <div class="grid-block small-2">
       <p>报修人</p>
     </div>
     <div class="grid-block small-10">
-      <input type="text" required value="{{::detailInfo.name}}" readonly/>
+      <input type="text" required value="{{detailInfo.name}}" readonly/>
     </div>
   </div>
 
@@ -23,7 +24,7 @@ dependencies: controllers/outFixDetailController,services/commonService,services
       <p>小区</p>
     </div>
     <div class="grid-block small-10">
-      <input type="text" required value="{{::detailInfo.area}}" readonly/>
+      <input type="text" required value="{{detailInfo.area}}" readonly/>
     </div>
   </div>
 
@@ -32,21 +33,30 @@ dependencies: controllers/outFixDetailController,services/commonService,services
       <p style="padding-top: 4px;">备注</p>
     </div>
     <div class="grid-block small-10">
-      <textarea style="border: none" rows="5" disabled>{{::detailInfo.content}}</textarea>
+      <textarea style="border: none" rows="5" disabled>{{detailInfo.content}}</textarea>
     </div>
   </div>
 
-  <div class="grid-block">
-      <img ng-repeat="p in detailInfo.imgs" src="{{::p}}">
+  <!--<div class="grid-block">-->
+      <!--<img ng-repeat="p in detailInfo.imgs" src="{{p}}">-->
+  <!--</div>-->
+
+  <div class="grid-block align-center creditCard-div" ng-click="goGallery()">
+    <div class="grid-block small-2">
+      <p>图片</p>
+    </div>
+    <div class="grid-block small-10">
+      <i class="right-arrow"></i>
+    </div>
   </div>
 
 
   <div class="grid-block align-center creditCard-div" style="height: 100px">
-    <div class="grid-block small-2">
+    <div class="grid-block small-3">
       <p style="padding-top: 4px;color: #c2680d;font-weight: bold">官方回复</p>
     </div>
-    <div class="grid-block small-10">
-      <textarea style="border: none" rows="5" disabled>{{::detailInfo.doContent}}</textarea>
+    <div class="grid-block small-9">
+      <textarea style="border: none" rows="5" disabled>{{detailInfo.doContent}}</textarea>
     </div>
   </div>
 

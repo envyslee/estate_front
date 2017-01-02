@@ -11,19 +11,22 @@ dependencies: controllers/outFixController,services/commonService,services/conve
   </div>
 
   <div class="grid-block" ng-repeat="t in fixList" style="border-bottom: 1px solid #ccc">
-    <a ui-sref="outFixDetail({id:'{{t.id}}'})" style="display: inherit">
+    <a ui-sref="outFixDetail({id:'{{t.id}}'})" style="width: 100%;padding: 12px;overflow-y: hidden">
 
       <div class="grid-block  vertical " style="margin: auto 0">
-        <div class="grid-block">
+        <div class="grid-block" style="width: 100%;overflow-y: hidden">
           <strong >{{t.userName}}</strong>
-          <img ng-if="t.status==1" src="assets/images/estate-img/button_xinbaoxiu@3x.png" style="float: right">
-          <img ng-if="t.status==2" src="assets/images/estate-img/button_yijiejue@3x.png" style="float: right">
+          <div class="grid-block align-right" >
+            <img ng-if="t.status==1" src="assets/images/estate-img/xinbaoxiu.png" style="width: 15%;height: 100%;">
+            <img ng-if="t.status==2" src="assets/images/estate-img/yijiejue.png"  style="width: 15%;height: 100%;">
+          </div>
+
         </div>
-        <div class="grid-block">
+        <div class="grid-block" style="margin-top: 6px;overflow-y: hidden">
           <span>{{t.area}}</span>
-          <span>{{t.createDate}}</span>
+          <span class="grid-block align-right" style="overflow-y: hidden">{{t.createDate}}</span>
         </div>
-        <div class="grid-block">
+        <div class="grid-block" style="margin-top: 6px;overflow-y: hidden">
           <span>{{::t.content}}</span>
         </div>
       </div>
@@ -31,3 +34,5 @@ dependencies: controllers/outFixController,services/commonService,services/conve
   </div>
 
 </div>
+
+

@@ -10,14 +10,16 @@ define([], function () {
       $state: $state
     }));
 
+
+
     $scope.enterInfo={
-      village:'',
-      floor:'',
-      house:'',
+      // village:'',
+      // floor:'',
+      // house:'',
       name:'',
       phone:'',
       content:'',
-      userId:$stateParams.userId
+      typeId:$stateParams.typeId
     }
 
     $scope.from=$stateParams.from;
@@ -128,11 +130,11 @@ define([], function () {
 
     $scope.enterInit=function () {
       commonService.Loading();
-      var villages= commonService.GetCacheObj('village');
-      if (villages==null){
+      // var villages= commonService.GetCacheObj('village');
+      // if (villages==null){
         userService.GetVillage().then(function (data) {
+          commonService.LoadingEnd();
           if(data.status==200){
-            commonService.LoadingEnd();
             $scope.villages=data.data;
             commonService.CacheObj('village',data.data);
           }else{
@@ -142,9 +144,10 @@ define([], function () {
           commonService.LoadingEnd();
           alert('获取小区失败，请稍后再试');
         });
-      }else{
-        $scope.villages=villages;
-      }
+      // }else{
+      //   commonService.LoadingEnd();
+      //   $scope.villages=villages;
+      // }
     }
 
     $scope.enterSubmit=function () {
@@ -161,7 +164,8 @@ define([], function () {
             convenientService.SaveImg($scope.imgSrc,id,2).then(function (data) {
               commonService.LoadingEnd();
               if(data.status==200){
-                alert('提交成功');
+                alert('提交成功，我们的工作人员将及时跟进');
+                history.go(-1);
               }else {
                 alert('图片上传失败');
               }
@@ -169,10 +173,16 @@ define([], function () {
               commonService.LoadingEnd();
               alert('图片上传失败');
             })
+          }else{
+            alert('提交成功，我们的工作人员将及时跟进');
+            //window.close();
+            //window.open("","_self").close();
+            commonService.LoadingEnd();
+            history.go(-1);
           }
         }else {
           commonService.LoadingEnd();
-          alert('提交失败，请稍后再试');
+          alert(d.message);
         }
       },function () {
         commonService.LoadingEnd();

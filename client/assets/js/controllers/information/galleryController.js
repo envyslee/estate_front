@@ -9,15 +9,17 @@ define([], function () {
       $state: $state
     }));
 
-    var from=$stateParams.from;
-    var id=$stateParams.id;
+    // var from=$stateParams.from;
+    // var id=$stateParams.id;
+
+    $scope.imgUrls=$stateParams.urls.split(',');
 
     $scope.gallaryInit=function () {
       $('.am-gallery').pureview();
     }
 
     $scope.goBack=function () {
-      $state.go('houseDetail',{from:from,id:id});
+     // $state.go('houseDetail',{from:from,id:id});
     }
 
   };

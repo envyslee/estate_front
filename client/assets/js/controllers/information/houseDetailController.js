@@ -9,7 +9,6 @@ define([], function () {
       $state: $state
     }));
 
-    var from=$stateParams.from;
     var id=$stateParams.id;
 
     $scope.menushow = false;
@@ -17,20 +16,13 @@ define([], function () {
       $scope.menushow = !$scope.menushow;
     }
 
-    $scope.goBack=function () {
-     if(from=='home'){
-       $state.go('house');
-     }else {
-       $state.go('houseList',{type:from});
-     }
-    }
 
     $scope.goGallery=function () {
-      $state.go('gallery',{from:from,id:id});
+      $state.go('gallery',{urls:$scope.detail.imgUrls});
     }
 
     $scope.goReserve=function () {
-      $state.go('reserve',{houseId:id,from:from});
+      $state.go('reserve',{houseId:id});
     }
 
     $scope.detailInit=function () {

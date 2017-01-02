@@ -110,6 +110,7 @@
   border-bottom: 1px solid #ccc;
   height: 2.5rem;
   overflow-y: hidden !important;
+  padding: 0 12px
 }
 .creditCard-div div{
   overflow-y: hidden;
@@ -1278,6 +1279,10 @@ table.gridtable td {
 
 .am-icon-chevron-left:before {
   content: "\f053";
+}
+
+.btn-bottom{
+  margin-bottom: 40px;
 }
 
 

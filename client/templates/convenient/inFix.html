@@ -1,6 +1,6 @@
 ---
 name: inFix
-url: /inFix/:userId
+url: /inFix
 controller: inFixController
 dependencies: controllers/inFixController,services/commonService,services/commonService,services/convenientService
 ---
@@ -9,23 +9,15 @@ dependencies: controllers/inFixController,services/commonService,services/common
     <div class="center title">室内报修</div>
 
   </div>
-  <div class="grid-block vertical serviceImg" >
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter()">
-      <img src="assets/images/estate-img/dianweixiu.png">
-      <strong style="margin: auto 2rem">供电设施维修</strong>
-    </div>
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/shuiweixiu.png">
-      <strong  style="margin: auto 2rem">供水设施维修</strong>
-    </div>
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/jiatingweixiu.png">
-      <strong  style="margin: auto 2rem">家庭物品维修</strong>
+  <div class="grid-block vertical serviceImg">
+    <div ng-repeat="s in serverList" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter(s.id)">
+      <img  src="{{s.imgUrl}}">
+      <strong style="margin: auto 2rem">{{s.name}}</strong>
     </div>
   </div>
 
   <a class="float-circle-cash"   ng-click="openPmIf()"></a>
-  <div zf-modal="" id="priceModalPm" class="dialog" >
+  <div zf-modal="" id="priceModalIf" class="dialog" >
     <table class="gridtable">
       <thead>
       <tr>

@@ -37,13 +37,24 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+
+    var getServerList=function (serviceType) {
+      var param={
+        type:type,
+        version:version,
+        serviceType:serviceType
+      }
+      var url=baseUrl+"/api/server/getServerList";
+      return commonService.BasePostRequest(url,param);
+    }
+
     var submitService=function (info) {
       var param={
         type:type,
         version:version,
-        areaId:info.village.id,
-        floor:info.floor,
-        house:info.house,
+        // areaId:info.village.id,
+        // floor:info.floor,
+        // house:info.house,
         name:info.name,
         phone:info.phone,
         content:info.content,
@@ -94,9 +105,10 @@ define([], function () {
       var param={
         type:type,
         version:version,
-        customerId:data.customerId,
         content:data.content,
-        areaId:data.areaId
+        areaId:data.areaId,
+        phone:data.phone,
+        name:data.name
       }
       var url=baseUrl+"/api/server/submitOutFix";
       return commonService.BasePostRequest(url,param);
@@ -110,7 +122,8 @@ define([], function () {
       SaveImg:saveImg,
       GetOutFixList:getOutFixList,
       GetOutFixDetail:getOutFixDetail,
-      SubmitOutFix:submitOutFix
+      SubmitOutFix:submitOutFix,
+      GetServerList:getServerList
     }
 
   }

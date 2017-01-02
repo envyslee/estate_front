@@ -1,29 +1,29 @@
 ---
 name: entering
-url: /entering/:from/:userId
+url: /entering/:from/:typeId
 controller: enteringController
 dependencies: controllers/enteringController,services/commonService,services/userService,services/convenientService
 ---
-<div class="ui-container" ng-init="enterInit()">
+<div class="ui-container">
   <div class="primary title-bar" style="height: 3rem">
     <div class="center title">{{title}}</div>
-
+    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
   </div>
 
   <form style="margin: 1rem 1rem 0 1rem" id="enterForm" name="enterForm">
 
-    <label>
-      选择小区</label>
-    <select name="" id="" ng-model="enterInfo.village"  ng-options="x.areaName for x in villages">
-    </select>
-    <label>
-      楼栋
-      <input type="text" placeholder="请输入您的楼栋" ng-model="enterInfo.floor" required>
-    </label>
-    <label>
-      室号
-      <input type="text" placeholder="请输入您的室号" ng-model="enterInfo.house" required>
-    </label>
+    <!--<label>-->
+      <!--选择小区</label>-->
+    <!--<select name="" id="" ng-model="enterInfo.village"  ng-options="x.areaName for x in villages">-->
+    <!--</select>-->
+    <!--<label>-->
+      <!--楼栋-->
+      <!--<input type="text" placeholder="请输入您的楼栋" ng-model="enterInfo.floor" required>-->
+    <!--</label>-->
+    <!--<label>-->
+      <!--室号-->
+      <!--<input type="text" placeholder="请输入您的室号" ng-model="enterInfo.house" required>-->
+    <!--</label>-->
     <label>
       姓名
       <input type="text" placeholder="请输入您的姓名" ng-model="enterInfo.name" required>
@@ -62,7 +62,7 @@ dependencies: controllers/enteringController,services/commonService,services/use
         </div>
       </div>
     </div>
-    <a class="expand button"  ng-click="enterSubmit()">提交</a>
+    <a class="expand button btn-bottom"  ng-click="enterSubmit()">提交</a>
     <!--<a class="expand button" ng-class="{true:'disabled',false:''}[enterForm.$invalid]" ng-click="enterSubmit()">提交</a>-->
   </form>
   <div class="showMax" ng-show="chooseImg!=null&&chooseImg!=''" ng-click="closeMax()">

@@ -40,7 +40,7 @@ var app = null;
       requireBase: false
     });
 
-    $locationProvider.hashPrefix('!');
+    //$locationProvider.hashPrefix('!');
 
     //angular sys-collections
     app.register =

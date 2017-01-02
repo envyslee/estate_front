@@ -10,19 +10,19 @@ define([], function () {
     }));
 
     $scope.userInfo={
-      village:'',
-      floor:'',
-      unit:'',
-      house:'',
+      //village:'',
+      //floor:'',
+      //unit:'',
+      //house:'',
       name:'',
       idNo:'',
       phone:'',
       nickName:'',
       pwd:'',
       pwdAgain:''
-    }
+    };
 
-
+    //sessionStorage.setItem('token',$stateParams.openId);
 
     $scope.type=$stateParams.type;
     if($scope.type=='register'){
@@ -39,13 +39,8 @@ define([], function () {
             $scope.villages=data.data;
             commonService.CacheObj('village',data.data);
 
-            if($scope.type=='modify'){
-              if(sessionStorage.getItem('token')==null){
-                alert('您的登录已失效，请重新登录');
-                $state.go('login');
-              }else {
-                getUserInfo();
-              }
+            if($scope.type=='modify') {
+              getUserInfo();
             }
           }else{
             alert('获取小区失败，请稍后再试');
@@ -55,19 +50,16 @@ define([], function () {
         });
       }else{
         $scope.villages=villages;
-        if($scope.type=='modify'){
-          if(sessionStorage.getItem('token')==null){
-            alert('您的登录已失效，请重新登录');
-            $state.go('login');
-          }else {
-            getUserInfo();
-          }
+        if($scope.type=='modify') {
+          getUserInfo();
         }
       }
     }
 
     var getUserInfo=function () {
-      userService.GetUserInfo(sessionStorage.getItem('token')).then(function (data) {
+      commonService.Loading();
+      userService.GetUserInfo(sessionStorage.getItem('id')).then(function (data) {
+        commonService.LoadingEnd();
         if(data.status==200){
           var c=data.data;
           $scope.userInfo=c;
@@ -86,6 +78,7 @@ define([], function () {
           }
         }
       },function () {
+        commonService.LoadingEnd();
         alert('获取个人信息失败，请重新再试');
       })
     }
@@ -119,8 +112,8 @@ define([], function () {
         userService.Register($scope.userInfo).then(function (data) {
           commonService.LoadingEnd();
           if(data.status==200){
-            alert('恭喜您注册成功，立即去登录！');
-            $state.go('login');
+            sessionStorage.setItem('id',data.data);
+            $state.go('userCenter');
           }else {
             alert(data.message);
           }
@@ -132,8 +125,8 @@ define([], function () {
         userService.Modify($scope.userInfo).then(function (data) {
           commonService.LoadingEnd();
           if(data.status==200){
-            alert('修改信息成功，立即去登录！');
-            $state.go('login');
+            //alert('修改信息成功，立即去登录！');
+            $state.go('userCenter');
           }else {
             alert(data.message);
           }

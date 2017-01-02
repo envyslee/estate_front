@@ -1,6 +1,6 @@
 ---
 name: housekeeping
-url: /housekeeping/:userId
+url: /housekeeping
 controller: housekeepingController
 dependencies: controllers/housekeepingController,services/commonService,services/convenientService
 ---
@@ -10,18 +10,10 @@ dependencies: controllers/housekeepingController,services/commonService,services
 
   </div>
 
-  <div class="grid-block vertical serviceImg" >
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter()">
-      <img src="assets/images/estate-img/zhongdiangong.png">
-      <strong style="margin: auto 2rem">钟点工</strong>
-    </div>
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/yuesao.png">
-      <strong  style="margin: auto 2rem">月嫂</strong>
-    </div>
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/baomu.png">
-      <strong  style="margin: auto 2rem">保姆</strong>
+  <div class="grid-block vertical serviceImg">
+    <div ng-repeat="s in serverList" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter(s.id)">
+      <img  src="{{s.imgUrl}}">
+      <strong style="margin: auto 2rem">{{s.name}}</strong>
     </div>
   </div>
 

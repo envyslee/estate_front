@@ -1,13 +1,13 @@
 ---
 name: houseDetail
-url: /houseDetail/:from/:id
+url: /houseDetail/:id
 controller: houseDetailController
 dependencies: controllers/houseDetailController,services/commonService,services/informationService
 ---
 <div class="ui-container" ng-init="detailInit()">
   <div class="primary title-bar">
     <div class="center title">详情</div>
-    <span class="left"><a style="display: block;" ng-click="goBack()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
+    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
     <span class="right">
       <a  ng-click="toggleMenu()"><i class="icon-top-menu"></i></a>
       <ul id="menu-list" class="menu-list" ng-show="menushow">
@@ -65,7 +65,7 @@ dependencies: controllers/houseDetailController,services/commonService,services/
 
 
 
-    <div class="grid-block align-center creditCard-div" ng-click="goGallery()">
+    <div ng-if="detail.imgUrls!=null" class="grid-block align-center creditCard-div" ng-click="goGallery()">
       <div class="grid-block small-2">
         <p>图片</p>
       </div>

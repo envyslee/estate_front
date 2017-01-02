@@ -10,28 +10,36 @@ dependencies: controllers/registerController,services/commonService,services/use
     <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
   </div>
   <form style="margin: 1rem 1rem 0 1rem" id="registerForm" name="registerForm">
-    <label>小区</label>
-    <select  name="" id="" ng-model="userInfo.village" ng-options="x.areaName for x in villages" required>
+    <label  ng-if="type=='modify'">小区</label>
+    <select  ng-if="type=='modify'" name="" id="" ng-model="userInfo.village" ng-options="x.areaName for x in villages" required>
     </select>
-    <label>
+    <label  ng-if="type=='modify'">
       楼栋
       <input type="text" placeholder="请输入楼栋" ng-model="userInfo.floor" required>
     </label>
-    <label>
+    <label  ng-if="type=='modify'">
       单元
       <input type="text" placeholder="请输入单元" ng-model="userInfo.unit" required>
     </label>
-    <label>
+    <label  ng-if="type=='modify'">
       门号
       <input type="text" placeholder="请输入门号" ng-model="userInfo.house" required>
     </label>
-    <label>
+    <label ng-if="type=='register'">
       姓名
       <input type="text" placeholder="请输入姓名" ng-model="userInfo.name" required>
     </label>
-    <label>
+    <label ng-if="type=='modify'">
+      姓名
+      <input type="text" placeholder="请输入姓名" ng-model="userInfo.name" disabled>
+    </label>
+    <label ng-if="type=='register'">
       身份证
       <input type="text" placeholder="请输入身份证号码" maxlength="18" ng-model="userInfo.idNo" required>
+    </label>
+    <label ng-if="type=='modify'">
+      身份证
+      <input type="text" placeholder="请输入身份证号码" maxlength="18" ng-model="userInfo.idNo" disabled>
     </label>
     <label>
       手机
@@ -49,8 +57,8 @@ dependencies: controllers/registerController,services/commonService,services/use
       确认密码
       <input type="password" placeholder="请再次输入密码" maxlength="12" ng-model="userInfo.pwdAgain" required>
     </label>
-    <a ng-if="type=='register'" class="expand button" ng-class="{true:'disabled',false:''}[registerForm.$invalid]" ng-click="registerSubmit()">提交</a>
-    <a ng-if="type=='modify'" class="expand button"  ng-click="registerSubmit()">提交</a>
+    <a ng-if="type=='register'" class="expand button btn-bottom" ng-class="{true:'disabled',false:''}[registerForm.$invalid]" ng-click="registerSubmit()">提交</a>
+    <a ng-if="type=='modify'" class="expand button btn-bottom"  ng-click="registerSubmit()">提交</a>
   </form>
 
 </div>

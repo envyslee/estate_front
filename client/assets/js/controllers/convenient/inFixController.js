@@ -32,7 +32,18 @@ define([], function () {
         }
       },function () {
         feeTag=false;
+      });
+
+      convenientService.GetServerList(2).then(function (d) {
+        if(d.status==200){
+          $scope.serverList=d.data;
+        }else{
+          alert('获取数据失败，请稍后再试');
+        }
+      },function (e) {
+        alert('获取数据失败，请稍后再试');
       })
+
     }
   };
   inFixController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','convenientService','FoundationApi'];

@@ -1,6 +1,6 @@
 ---
 name: wash
-url: /wash/:userId
+url: /wash
 controller: washController
 dependencies: controllers/washController,services/commonService,services/commonService,services/convenientService
 ---
@@ -9,18 +9,25 @@ dependencies: controllers/washController,services/commonService,services/commonS
     <div class="center title">洗衣服务</div>
 
   </div>
-  <div class="grid-block vertical serviceImg" >
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter()">
-      <img  src="assets/images/estate-img/yidaixi.png">
-      <strong style="margin: auto 2rem">一袋洗</strong>
-    </div>
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/baoyuexi.png">
-      <strong  style="margin: auto 2rem">包月洗</strong>
-    </div>
-    <div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">
-      <img src="assets/images/estate-img/danjianxi.png">
-      <strong  style="margin: auto 2rem">单件洗</strong>
+  <!--<div class="grid-block vertical serviceImg" >-->
+    <!--<div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter()">-->
+      <!--<img  src="assets/images/estate-img/yidaixi.png">-->
+      <!--<strong style="margin: auto 2rem">一袋洗</strong>-->
+    <!--</div>-->
+    <!--<div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">-->
+      <!--<img src="assets/images/estate-img/baoyuexi.png">-->
+      <!--<strong  style="margin: auto 2rem">包月洗</strong>-->
+    <!--</div>-->
+    <!--<div class="grid-block" style="border-bottom: 1px solid #ccc;padding: 1rem">-->
+      <!--<img src="assets/images/estate-img/danjianxi.png">-->
+      <!--<strong  style="margin: auto 2rem">单件洗</strong>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div class="grid-block vertical serviceImg">
+    <div ng-repeat="s in serverList" style="border-bottom: 1px solid #ccc;padding: 1rem" ng-click="goEnter(s.id)">
+      <img src="{{s.imgUrl}}">
+      <strong style="margin: auto 2rem">{{s.name}}</strong>
     </div>
   </div>
 

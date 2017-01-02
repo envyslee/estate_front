@@ -16,7 +16,7 @@ define([], function () {
       content:'',
       doContent:'',
       status:'',
-      imgs:''
+      imgs:[]
     }
 
     $scope.outFixDetailInit=function () {
@@ -26,7 +26,7 @@ define([], function () {
         if(data.status!=200){
           alert('获取报修详情失败，请稍后再试');
         }else {
-          var c=data.content;
+          var c=data.data;
           $scope.detailInfo.name=c.userName;
           $scope.detailInfo.area=c.area;
           $scope.detailInfo.content=c.content;
@@ -38,6 +38,10 @@ define([], function () {
         commonService.LoadingEnd();
         alert('获取报修详情失败，请稍后再试');
       })
+    }
+
+   $scope.goGallery=function () {
+      $state.go('gallery',{urls:$scope.detailInfo.imgs});
     }
   };
     outFixDetailController.$inject = ['$scope', '$stateParams', '$state', '$controller','commonService','convenientService'];

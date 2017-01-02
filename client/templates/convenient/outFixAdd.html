@@ -7,10 +7,10 @@ dependencies: controllers/outFixAddController,services/commonService,services/co
 <div class="ui-container" ng-init="ofaInit()">
   <div class="primary title-bar" style="height: 3rem">
     <div class="center title">新增报修</div>
+    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
   </div>
 
-  <div  style="margin: 1rem 1rem 0 1rem">
-    <div class="grid-block align-center creditCard-div">
+  <div class="grid-block align-center creditCard-div">
     <div class="grid-block small-2">
       <p>报修人</p>
     </div>
@@ -21,11 +21,20 @@ dependencies: controllers/outFixAddController,services/commonService,services/co
 
   <div class="grid-block align-center creditCard-div">
     <div class="grid-block small-2">
+      <p>手机号</p>
+    </div>
+    <div class="grid-block small-10">
+      <input type="text" maxlength="11" required  ng-model="fixInfo.phone" />
+    </div>
+  </div>
+
+  <div class="grid-block align-center creditCard-div">
+    <div class="grid-block small-2">
       <p>小区</p>
     </div>
     <div class="grid-block small-10">
       <select name="" id="" ng-model="fixInfo.areaId" class="selectBg">
-        <option ng-repeat="v in villages" value="v.id">{{::v.areaName}}</option>
+        <option ng-repeat="v in villages" value="{{v.id}}">{{v.areaName}}</option>
       </select>
     </div>
   </div>
@@ -39,6 +48,7 @@ dependencies: controllers/outFixAddController,services/commonService,services/co
     </div>
   </div>
 
+  <div style="margin: 0 1rem">
   <label>
     最多上传三张图片</label>
   <div class="grid-block">
@@ -77,5 +87,6 @@ dependencies: controllers/outFixAddController,services/commonService,services/co
   </div>
 
 
-
 </div>
+
+<canvas id="uploadImg" style="display: none" ></canvas>

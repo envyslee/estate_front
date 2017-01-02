@@ -18,7 +18,7 @@ define([], function () {
       userService.Login($scope.login).then(function (data) {
         if(data.status==200){
           var user=data.data;
-          sessionStorage.setItem('token',user.token);
+          sessionStorage.setItem('id',user.id);
           sessionStorage.setItem('nickName',user.nickName);
           $state.go('userCenter');
         }else{

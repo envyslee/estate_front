@@ -17,9 +17,9 @@ dependencies: controllers/loginController,services/commonService,services/userSe
     </label>
     <label>
       密码
-      <input type="text" placeholder="请输入您的登录密码" ng-model="login.password" required>
+      <input type="password" placeholder="请输入您的登录密码" ng-model="login.password" required>
     </label>
-    <a class="expand button" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[loginForm.$invalid]" ng-click="loginSubmit()">登录</a>
+    <a class="expand button btn-bottom" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[loginForm.$invalid]" ng-click="loginSubmit()">登录</a>
     <a ui-sref="findPassword" style="float: right">忘记密码？</a>
   </form>
 

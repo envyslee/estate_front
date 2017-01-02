@@ -14,15 +14,16 @@ define([], function () {
       var param={
         type:type,
         version:version,
-        areaId:data.village.id,
-        floor:data.floor,
-        unit:data.unit,
-        house:data.house,
+        // areaId:data.village.id,
+        // floor:data.floor,
+        // unit:data.unit,
+        // house:data.house,
         customName:data.name,
         idNo:data.idNo,
         phone:data.phone,
         niceName:data.nickName,
-        password:data.pwd
+        password:data.pwd,
+        token:data.openId
       }
       var url=baseUrl+"/api/user/register";
       return commonService.BasePostRequest(url,param);
@@ -30,6 +31,7 @@ define([], function () {
 
     var modify=function (data) {
       var param={
+        id:data.id,
         type:type,
         version:version,
         areaId:data.village.id,
@@ -40,17 +42,16 @@ define([], function () {
         idNo:data.idNo,
         phone:data.phone,
         niceName:data.nickName,
-        token:sessionStorage.getItem('token')
       }
       var url=baseUrl+"/api/user/modify";
       return commonService.BasePostRequest(url,param);
     }
 
-    var getUserInfo=function (token) {
+    var getUserInfo=function (id) {
       var param={
         type:type,
         version:version,
-        token:token
+        id:id
       }
       var url=baseUrl+"/api/user/getUserInfo";
       return commonService.BasePostRequest(url,param);

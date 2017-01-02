@@ -41,7 +41,7 @@ dependencies: controllers/houseController,services/commonService,services/inform
     <header><strong>最新租房信息</strong></header>
     <ul>
       <li ng-repeat="t in tenement">
-        <a ui-sref="houseDetail({id:'{{t.id}}',from:'home'})">
+        <a ui-sref="houseDetail({id:'{{t.id}}'})">
           <div>
             <span>{{t.title}}</span>
             <span >{{t.time}}</span>
@@ -56,7 +56,7 @@ dependencies: controllers/houseController,services/commonService,services/inform
       <header><strong>最新卖房信息</strong></header>
       <ul>
         <li ng-repeat="s in sale">
-          <a ui-sref="houseDetail({id:'{{t.id}}',from:'home'})">
+          <a ui-sref="houseDetail({id:'{{s.id}}'})">
             <div>
               <span>{{s.title}}</span>
               <span >{{s.time}}</span>

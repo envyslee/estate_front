@@ -11,8 +11,8 @@ define([], function () {
 
     var feeTag=true;
 
-    $scope.goEnter=function () {
-      $state.go('entering',{from:'wash',userId:$stateParams.userId});
+    $scope.goEnter=function (id) {
+      $state.go('entering',{from:'wash',typeId:id});
     }
 
     $scope.openPmWs=function () {
@@ -32,7 +32,18 @@ define([], function () {
         }
       },function () {
         feeTag=false;
+      });
+
+      convenientService.GetServerList(3).then(function (d) {
+        if(d.status==200){
+          $scope.serverList=d.data;
+        }else{
+          alert('获取数据失败，请稍后再试');
+        }
+      },function (e) {
+        alert('获取数据失败，请稍后再试');
       })
+
     }
 
   };

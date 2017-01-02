@@ -13,7 +13,8 @@ define([], function () {
       name:'',
       area:'',
       content:'',
-      areaId:''
+      areaId:'',
+      phone:''
     }
 
     $scope.ofaInit=function () {
@@ -45,7 +46,7 @@ define([], function () {
           if( $scope.imgSrc.b1==''&& $scope.imgSrc.b2==''&& $scope.imgSrc.b3==''){
             $state.go('outFix');
           }else {
-            convenientService.SaveImg( $scope.imgSrc).then(function () {
+            convenientService.SaveImg($scope.imgSrc,data.data,3).then(function () {
               if(data.status==200){
                 $state.go('outFix');
               }else{
@@ -55,6 +56,8 @@ define([], function () {
               alert('保存图片失败，请稍后再试');
             })
           }
+        }else{
+          alert(data.message);
         }
       },function (e) {
         alert('提交失败，请稍后再试')

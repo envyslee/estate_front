@@ -15,7 +15,7 @@ define([], function () {
       convenientService.GetOutFixList().then(function (data) {
         commonService.LoadingEnd();
         if(data.status==200){
-          $scope.fixList=data.content;
+          $scope.fixList=data.data;
         }else {
           alert('获取维修列表出错，请稍后再试');
         }
