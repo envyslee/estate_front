@@ -109,6 +109,17 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var getMyList=function (userId, kind) {
+      var param={
+        type:type,
+        version:version,
+        userId:userId,
+        kind:kind
+      }
+      var url=baseUrl+"/api/server/getMyList";
+      return commonService.BasePostRequest(url,param);
+    }
+
 
     return{
       Register:register,
@@ -118,7 +129,8 @@ define([], function () {
       Logout:logout,
       CheckIdentity:checkIdentity,
       ResetPwd:resetPwd,
-      GetUserInfo:getUserInfo
+      GetUserInfo:getUserInfo,
+      GetMyList:getMyList
     }
   }
 

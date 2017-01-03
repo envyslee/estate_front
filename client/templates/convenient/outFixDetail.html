@@ -41,7 +41,7 @@ dependencies: controllers/outFixDetailController,services/commonService,services
       <!--<img ng-repeat="p in detailInfo.imgs" src="{{p}}">-->
   <!--</div>-->
 
-  <div class="grid-block align-center creditCard-div" ng-click="goGallery()">
+  <div class="grid-block align-center creditCard-div" ng-if="detailInfo.imgs!=null&&detailInfo.imgs.length>0" ng-click="goGallery()">
     <div class="grid-block small-2">
       <p>图片</p>
     </div>

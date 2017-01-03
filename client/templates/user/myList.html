@@ -1,0 +1,35 @@
+---
+name: myList
+url: /myList/:type
+controller: myListController
+dependencies: controllers/myListController,services/commonService,services/userService
+---
+<div class="ui-container" ng-init="mlInit()">
+  <div class="primary title-bar">
+    <div class="center title">{{title}}</div>
+    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
+  </div>
+
+<div class="grid-block vertical" ng-repeat="c in content" style="margin: 12px;border-bottom: 1px solid #cccccc;padding-bottom: 6px" ng-if="kind!=4">
+  <div class="grid-block div-height" >
+    <strong>{{c.name}}</strong>
+    <div class="grid-block align-right" >
+      {{c.createTime}}
+    </div>
+  </div>
+  <div class="grid-block " style="overflow-y: hidden;margin-top: 6px">提交内容<br>{{c.content}}</div>
+  <div class="grid-block " style="overflow-y: hidden;margin-top: 8px;color: #c2680d;" ng-if="c.doContent!=null">官方回复<br>{{c.doContent}}</div>
+</div>
+
+  <div class="grid-block vertical" ng-repeat="c in content" style="margin: 12px;border-bottom: 1px solid #cccccc;padding-bottom: 6px" ng-if="kind==4">
+    <div class="grid-block div-height" >
+      <strong >{{c.area.areaName}}</strong>
+      <div class="grid-block align-right" >
+        <img ng-if="c.status==1" src="assets/images/estate-img/xinbaoxiu.png"  width="50px">
+        <img ng-if="c.status==2" src="assets/images/estate-img/yijiejue.png"   width="50px">
+      </div>
+    </div>
+    <div class="grid-block " style="overflow-y: hidden;margin-top: 6px">提交内容({{c.createTime|date:"yyyy/MM/dd hh:mm:ss"}})<br>{{c.content}}</div>
+    <div class="grid-block " style="overflow-y: hidden;margin-top: 8px;color: #c2680d;" ng-if="c.doContent!=null">官方回复({{c.doTime|date:"yyyy/MM/dd hh:mm:ss"}})<br>{{c.doContent}}</div>
+  </div>
+</div>

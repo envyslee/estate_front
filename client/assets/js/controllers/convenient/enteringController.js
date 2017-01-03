@@ -25,13 +25,13 @@ define([], function () {
     $scope.from=$stateParams.from;
     if( $scope.from=='inFix'){
       $scope.title="室内报修";
-      $scope.enterInfo.typeId=2;
+      $scope.enterInfo.typeId=1;
     }else if( $scope.from=='wash'){
       $scope.title="洗衣服务";
       $scope.enterInfo.typeId=3;
     }else if( $scope.from=='housekeeping'){
       $scope.title="家政服务";
-      $scope.enterInfo.typeId=1;
+      $scope.enterInfo.typeId=2;
     }
 
 
@@ -128,27 +128,27 @@ define([], function () {
       return canvas.toDataURL("image/jpeg",0.9);
     }
 
-    $scope.enterInit=function () {
-      commonService.Loading();
+    // $scope.enterInit=function () {
+    //   commonService.Loading();
       // var villages= commonService.GetCacheObj('village');
       // if (villages==null){
-        userService.GetVillage().then(function (data) {
-          commonService.LoadingEnd();
-          if(data.status==200){
-            $scope.villages=data.data;
-            commonService.CacheObj('village',data.data);
-          }else{
-            alert('获取小区失败，请稍后再试');
-          }
-        },function (e) {
-          commonService.LoadingEnd();
-          alert('获取小区失败，请稍后再试');
-        });
+      //   userService.GetVillage().then(function (data) {
+      //     commonService.LoadingEnd();
+      //     if(data.status==200){
+      //       $scope.villages=data.data;
+      //       commonService.CacheObj('village',data.data);
+      //     }else{
+      //       alert('获取小区失败，请稍后再试');
+      //     }
+      //   },function (e) {
+      //     commonService.LoadingEnd();
+      //     alert('获取小区失败，请稍后再试');
+      //   });
       // }else{
       //   commonService.LoadingEnd();
       //   $scope.villages=villages;
       // }
-    }
+   // }
 
     $scope.enterSubmit=function () {
       if(!commonService.CheckPhone($scope.enterInfo.phone)){
