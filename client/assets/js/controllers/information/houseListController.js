@@ -14,7 +14,8 @@ define([], function () {
       busy : false,
       after: '',
       page : 1,
-      rows:5
+      rows:5,
+      areaName:''
   }
 
 
@@ -31,10 +32,7 @@ define([], function () {
       $scope.menushow = !$scope.menushow;
     }
 
-    $scope.houseListInit=function () {
 
-
-    }
 
     $scope.nextPage=function () {
       if ($scope.list.busy){
@@ -43,7 +41,7 @@ define([], function () {
       $scope.list.busy=true;
 
       //ajax更新数据
-      informationService.GetList($stateParams.type,$scope.list.page,$scope.list.rows).then(function (d) {
+      informationService.GetList($stateParams.type,$scope.list.page,$scope.list.rows,$scope.list.areaName).then(function (d) {
         if(d.total>0){
           $scope.list.page++;
           var data=$scope.list.items;
@@ -54,6 +52,23 @@ define([], function () {
         alert('获取数据异常，请稍后再试');
       });
 
+    }
+
+    $scope.houseSearch=function () {
+      $scope.list.items=[];
+      $scope.list.page=1;
+      $scope.list.busy=true;
+      //ajax更新数据
+      informationService.GetList($stateParams.type,$scope.list.page,$scope.list.rows,$scope.list.areaName).then(function (d) {
+        if(d.total>0){
+          $scope.list.page++;
+          var data=$scope.list.items;
+          $scope.list.items=data.concat(d.data);
+        }
+        $scope.list.busy=false;
+      },function () {
+        alert('获取数据异常，请稍后再试');
+      });
     }
 
 

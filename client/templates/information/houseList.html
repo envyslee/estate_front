@@ -4,7 +4,7 @@ url: /houseList/:type
 controller: houseListController
 dependencies: controllers/houseListController,services/commonService,services/informationService
 ---
-<div class="ui-container" ng-init="houseListInit()">
+<div class="ui-container" >
   <div class="primary title-bar">
     <div class="center title">{{title}}</div>
     <span class="left"><a ui-sref="house" ><img zf-iconic="" icon="home" size="small"></a></span>
@@ -20,22 +20,22 @@ dependencies: controllers/houseListController,services/commonService,services/in
 
 
     <span class="inline-label" style="margin: 1rem 0 .5rem 0">
-    <input type="search" placeholder="小区名字">
-    <a href="javascript:void(0) " class="button">搜索</a>
+    <input type="search" placeholder="小区名字" ng-model="list.areaName">
+    <a href="javascript:void(0) " class="button" ng-click="houseSearch()">搜索</a>
     </span>
 
 
   <div infinite-scroll='nextPage()' infinite-scroll-disabled='list.busy' infinite-scroll-distance='1'>
-    <div class="grid-block" ng-repeat="t in list.items" style="border-bottom: 1px solid #ccc">
+    <div class="grid-block" ng-repeat="t in list.items" style="border-bottom: 1px solid #ccc;margin-top: 12px;padding-bottom: 6px">
       <a ui-sref="houseDetail({id:'{{t.id}}',from:'{{goType}}'})" style="display: inherit">
-        <div class="grid-block small-4">
-          <img src="assets/images/liren-img/icon_id.png" style="max-width:100%;max-height:100%;background-position:center top">
+        <div class="grid-block small-4" style="margin: 0 12px">
+          <img src="assets/images/estate-img/icon.png" style="width:90%;height:90%;background-position:center top">
         </div>
         <div class="grid-block small-8 vertical house-list" style="margin: auto 0">
           <strong style="">{{t.title}}</strong>
           <span style="line-height:1.5;">面积：{{t.area}}㎡</span>
           <span>价格：{{t.price}}元</span>
-          <span>发布时间：{{t.time}}</span>
+          <span>{{t.time|date:'yyyy/MM/dd hh:mm:ss'}}</span>
         </div>
       </a>
     </div>

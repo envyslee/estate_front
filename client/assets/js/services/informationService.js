@@ -66,13 +66,14 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
-    var getList=function (sellType,page,rows) {
+    var getList=function (sellType,page,rows,areaName) {
       var param={
         type:type,
         version:version,
         sellType:sellType=='sale'?1:2,
         page:page,
-        rows:rows
+        rows:rows,
+        areaName:areaName
       }
       var url=baseUrl+"/api/server/getList";
       return commonService.BasePostRequest(url,param);

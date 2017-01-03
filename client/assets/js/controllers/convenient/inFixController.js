@@ -24,7 +24,7 @@ define([], function () {
     }
 
     $scope.ifInit=function () {
-      convenientService.GetPrice(2).then(function (data) {
+      convenientService.GetPrice(1).then(function (data) {
         if(data.status!=200){
           feeTag=false;
         }else{
@@ -34,7 +34,7 @@ define([], function () {
         feeTag=false;
       });
 
-      convenientService.GetServerList(2).then(function (d) {
+      convenientService.GetServerList(1).then(function (d) {
         if(d.status==200){
           $scope.serverList=d.data;
         }else{

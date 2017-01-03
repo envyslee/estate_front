@@ -4,6 +4,6 @@
 
 require.config({
   baseUrl: 'assets/js/',
-  urlArgs: 'v=20150826'
+  urlArgs: 'v=1701031736'
 });
 

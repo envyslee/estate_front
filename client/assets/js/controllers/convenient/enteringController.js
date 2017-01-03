@@ -96,37 +96,88 @@ define([], function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(){
-          $scope.imgSrc.b1=zipPic(this.result);
+          //$scope.imgSrc.b1=zipPic(this.result);
+          var result=this.result;
+          var img=new Image();
+          img.src=result;
+          var maxsize=100*1024;
+          if(result.length<=maxsize){
+            $scope.imgSrc.b1=result;
+          }else {
+            if(img.complete){
+              $scope.imgSrc.b1=commonService.Compress(img);//此处得到base64
+              img = null;
+            }else{
+              img.onload=function () {
+                $scope.imgSrc.b1=commonService.Compress(img);//此处得到base64
+                img = null;
+              }
+            }
+          }
         }
       }else  if($scope.imgSrc.i2==''){
         $scope.imgSrc.i2=window.URL.createObjectURL(file);
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(){
-          $scope.imgSrc.b2=zipPic(this.result);
+          //$scope.imgSrc.b2=zipPic(this.result);
+          var result=this.result;
+          var img=new Image();
+          img.src=result;
+          var maxsize=100*1024;
+          if(result.length<=maxsize){
+            $scope.imgSrc.b2=result;
+          }else {
+            if(img.complete){
+              $scope.imgSrc.b2=commonService.Compress(img);//此处得到base64
+              img = null;
+            }else{
+              img.onload=function () {
+                $scope.imgSrc.b2=commonService.Compress(img);//此处得到base64
+                img = null;
+              }
+            }
+          }
         }
       }else {
         $scope.imgSrc.i3=window.URL.createObjectURL(file);
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(){
-          $scope.imgSrc.b3=zipPic(this.result);
+          var result=this.result;
+          var img=new Image();
+          img.src=result;
+          var maxsize=100*1024;
+          if(result.length<=maxsize){
+            $scope.imgSrc.b3=result;
+          }else {
+            if(img.complete){
+              $scope.imgSrc.b3=commonService.Compress(img);//此处得到base64
+              img = null;
+            }else{
+              img.onload=function () {
+                $scope.imgSrc.b3=commonService.Compress(img);//此处得到base64
+                img = null;
+              }
+            }
+          }
         }
       }
       $scope.$apply();
       imgIndex++;
     }
 
-    var zipPic=function (result) {
-      var canvas=document.getElementById("uploadImg");
-      var cxt=canvas.getContext('2d');
-      var img=new Image();
-      img.src= result;
-      canvas.width=640;
-      canvas.height=640*(img.height/img.width);
-      cxt.drawImage(img,0,0,640,canvas.height);
-      return canvas.toDataURL("image/jpeg",0.9);
-    }
+
+    // var zipPic=function (result) {
+    //   var canvas=document.getElementById("uploadImg");
+    //   var cxt=canvas.getContext('2d');
+    //   var img=new Image();
+    //   img.src= result;
+    //   canvas.width=640;
+    //   canvas.height=640*(img.height/img.width);
+    //   cxt.drawImage(img,0,0,640,canvas.height);
+    //   return canvas.toDataURL("image/jpeg",0.9);
+    // }
 
     // $scope.enterInit=function () {
     //   commonService.Loading();
@@ -174,10 +225,10 @@ define([], function () {
               alert('图片上传失败');
             })
           }else{
-            alert('提交成功，我们的工作人员将及时跟进');
             //window.close();
             //window.open("","_self").close();
             commonService.LoadingEnd();
+            alert('提交成功，我们的工作人员将及时跟进');
             history.go(-1);
           }
         }else {

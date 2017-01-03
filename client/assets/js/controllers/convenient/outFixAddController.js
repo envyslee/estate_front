@@ -41,25 +41,31 @@ define([], function () {
 
 
     $scope.outFixSubmit=function () {
+      commonService.Loading();
       convenientService.SubmitOutFix($scope.fixInfo).then(function (data) {
         if(data.status==200){
           if( $scope.imgSrc.b1==''&& $scope.imgSrc.b2==''&& $scope.imgSrc.b3==''){
-            $state.go('outFix');
+            alert('提交成功，我们的工作人员将及时跟进');
+            commonService.LoadingEnd();
+            history.go(-1);
           }else {
-            convenientService.SaveImg($scope.imgSrc,data.data,3).then(function () {
-              if(data.status==200){
-                $state.go('outFix');
+            convenientService.SaveImg($scope.imgSrc,data.data,3).then(function (d) {
+              if(d.status==200){
+                alert('提交成功，我们的工作人员将及时跟进');
+                history.go(-1);
               }else{
-                alert('保存图片失败，请稍后再试');
+                alert('图片上传失败');
               }
             },function (e) {
-              alert('保存图片失败，请稍后再试');
+              alert('图片上传失败');
             })
           }
         }else{
+          commonService.LoadingEnd();
           alert(data.message);
         }
       },function (e) {
+        commonService.LoadingEnd();
         alert('提交失败，请稍后再试')
       })
     }
@@ -126,36 +132,73 @@ define([], function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(){
-          $scope.imgSrc.b1=zipPic(this.result);
+          var result=this.result;
+          var img=new Image();
+          img.src=result;
+          var maxsize=100*1024;
+          if(result.length<=maxsize){
+            $scope.imgSrc.b1=result;
+          }else {
+            if(img.complete){
+              $scope.imgSrc.b1=commonService.Compress(img);//此处得到base64
+              img = null;
+            }else{
+              img.onload=function () {
+                $scope.imgSrc.b1=commonService.Compress(img);//此处得到base64
+                img = null;
+              }
+            }
+          }
         }
       }else  if($scope.imgSrc.i2==''){
         $scope.imgSrc.i2=window.URL.createObjectURL(file);
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(){
-          $scope.imgSrc.b2=zipPic(this.result);
+          var result=this.result;
+          var img=new Image();
+          img.src=result;
+          var maxsize=100*1024;
+          if(result.length<=maxsize){
+            $scope.imgSrc.b2=result;
+          }else {
+            if(img.complete){
+              $scope.imgSrc.b2=commonService.Compress(img);//此处得到base64
+              img = null;
+            }else{
+              img.onload=function () {
+                $scope.imgSrc.b2=commonService.Compress(img);//此处得到base64
+                img = null;
+              }
+            }
+          }
         }
       }else {
         $scope.imgSrc.i3=window.URL.createObjectURL(file);
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(){
-          $scope.imgSrc.b3=zipPic(this.result);
+          var result=this.result;
+          var img=new Image();
+          img.src=result;
+          var maxsize=100*1024;
+          if(result.length<=maxsize){
+            $scope.imgSrc.b3=result;
+          }else {
+            if(img.complete){
+              $scope.imgSrc.b3=commonService.Compress(img);//此处得到base64
+              img = null;
+            }else{
+              img.onload=function () {
+                $scope.imgSrc.b3=commonService.Compress(img);//此处得到base64
+                img = null;
+              }
+            }
+          }
         }
       }
       $scope.$apply();
       imgIndex++;
-    }
-
-    var zipPic=function (result) {
-      var canvas=document.getElementById("uploadImg");
-      var cxt=canvas.getContext('2d');
-      var img=new Image();
-      img.src= result;
-      canvas.width=640;
-      canvas.height=640*(img.height/img.width);
-      cxt.drawImage(img,0,0,640,canvas.height);
-      return canvas.toDataURL("image/jpeg",0.9);
     }
 
   };

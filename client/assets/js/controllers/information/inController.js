@@ -56,7 +56,7 @@ define([], function () {
       informationService.SubmitBuy($scope.inInfo).then(function (d) {
         if(d.status==200){
           alert('提交成功，我们的工作人员将尽快联系您看房');
-          $state.go('house');
+          history.go(-1);
         }else {
           alert('提交失败，请稍后再试');
         }
