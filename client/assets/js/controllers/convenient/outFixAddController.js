@@ -45,13 +45,13 @@ define([], function () {
       convenientService.SubmitOutFix($scope.fixInfo).then(function (data) {
         if(data.status==200){
           if( $scope.imgSrc.b1==''&& $scope.imgSrc.b2==''&& $scope.imgSrc.b3==''){
-            alert('提交成功，我们的工作人员将及时跟进');
+            alert('提交成功，工作人员将及时跟进');
             commonService.LoadingEnd();
             history.go(-1);
           }else {
             convenientService.SaveImg($scope.imgSrc,data.data,3).then(function (d) {
               if(d.status==200){
-                alert('提交成功，我们的工作人员将及时跟进');
+                alert('提交成功，工作人员将及时跟进');
                 history.go(-1);
               }else{
                 alert('图片上传失败');

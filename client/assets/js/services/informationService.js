@@ -4,7 +4,7 @@
 
 'use strict';
 define([], function () {
-  var informationService = function ($resource, $q,commonService) {
+  var informationService = function ($resource, commonService) {
     var baseUrl = app.service.baseUrl;
 
     var type=app.service.type;
@@ -101,6 +101,15 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
+    var getInvestment=function () {
+      var param={
+        type:type,
+        version:version
+      }
+      var url=baseUrl+"/api/server/getInvestment";
+      return commonService.BasePostRequest(url,param);
+    }
+
 
     return{
       GetTenement:getTenement,
@@ -109,10 +118,11 @@ define([], function () {
       GetList:getList,
       WatchHouse:watchHouse,
       GetDetail:getDetail,
-      SubmitBuy:submitBuy
+      SubmitBuy:submitBuy,
+      GetInvestment:getInvestment
     }
 
   }
-  informationService.$inject = ['$resource', '$q','commonService'];
+  informationService.$inject = ['$resource','commonService'];
   app.register.factory('informationService', informationService);
 });

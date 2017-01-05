@@ -16,9 +16,9 @@ var app = null;
   ]);
 
   app.service = {
-   // 'baseUrl': 'http://localhost:8080/wy',
+    'baseUrl': 'http://localhost:8080/wy',
 
-    'baseUrl': '/wy',
+    //'baseUrl': '/wy',
 
     'type':'1',
     'version':'1.0'

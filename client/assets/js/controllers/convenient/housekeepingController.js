@@ -12,8 +12,8 @@ define([], function () {
 
     var feeTag=true;
 
-    $scope.goEnter=function () {
-        $state.go('entering',{from:'housekeeping'});
+    $scope.goEnter=function (typeId) {
+        $state.go('entering',{from:'housekeeping',typeId:typeId});
     }
 
     $scope.openPM=function () {

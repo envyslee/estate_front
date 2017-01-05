@@ -18,9 +18,11 @@ dependencies: controllers/outController,services/commonService,services/informat
   </div>
   <form style="margin: 1rem 1rem 0 1rem" id="saleForm" name="saleForm">
 
+
+
     <label>
       最多上传三张图片</label>
-
+    <div class="grid-block">
     <input id="p1"  type="file" capture="camera" accept="image/*" style="display: none" input-on-change="uploadImg" required>
     <label for="p1" style="width: 4.4rem" ng-click="labelClick()">
       <div class="za_picture" >
@@ -29,7 +31,8 @@ dependencies: controllers/outController,services/commonService,services/informat
     </label>
 
 
-    <div class="grid-block align-right overImg">
+
+    <div class="grid-block align-right over-img">
       <div ng-show="imgSrc.i1!=''" >
         <img src="{{imgSrc.i1}}"  style="margin-left: 3.2rem;" ng-click="showMax(1)" >
         <img  src="assets/images/estate-img/cancel.png" ng-click="delImg(1)">
@@ -42,10 +45,9 @@ dependencies: controllers/outController,services/commonService,services/informat
         <img src="{{imgSrc.i3}}"  ng-click="showMax(3)">
         <img  src="assets/images/estate-img/cancel.png" ng-click="delImg(3)">
       </div>
-      <canvas id="uploadImg1" style="display: none" ></canvas>
-      <canvas id="uploadImg2" style="display: none"></canvas>
-      <canvas id="uploadImg3" style="display: none"></canvas>
     </div>
+    </div>
+
 
 
 

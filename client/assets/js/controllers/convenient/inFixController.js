@@ -11,8 +11,8 @@ define([], function () {
 
     var feeTag=true;
 
-    $scope.goEnter=function () {
-      $state.go('entering',{from:'inFix',userId:$stateParams.userId});
+    $scope.goEnter=function (typeId) {
+      $state.go('entering',{from:'inFix',typeId:typeId});
     }
 
     $scope.openPmIf=function () {

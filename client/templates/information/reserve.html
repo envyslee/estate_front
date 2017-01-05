@@ -26,7 +26,7 @@ dependencies: controllers/reserveController,services/commonService,services/info
       手机
       <input type="text" placeholder="请输入您的手机号码" ng-model="reserve.phone" maxlength="11" required>
     </label>
-    <p class="alert-font"><span style="color: red">*</span>提交后，我们的工作人员将尽快联系您看房</p>
+    <p class="alert-font"><span style="color: red">*</span>提交后，工作人员将尽快联系您看房</p>
 
     <a class="expand button btn-bottom" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[reserveForm.$invalid]" ng-click="watchSubmit()">提交</a>
   </form>

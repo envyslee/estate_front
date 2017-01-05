@@ -193,15 +193,15 @@ table.gridtable td {
   display: table-cell;vertical-align: middle
 }
 
-.overImg div{
+.over-img div{
   position: relative
 }
 
-.overImg div img:first-of-type{
+.over-img div img:first-of-type{
   width: 4.4rem;height: 4.4rem
 }
 
-.overImg div img:last-of-type{
+.over-img div img:last-of-type{
   width: 2rem;position:absolute;top:-2px;right: -2px;
 }
 

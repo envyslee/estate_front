@@ -13,9 +13,6 @@ define([], function () {
 
 
     $scope.enterInfo={
-      // village:'',
-      // floor:'',
-      // house:'',
       name:'',
       phone:'',
       content:'',
@@ -25,13 +22,10 @@ define([], function () {
     $scope.from=$stateParams.from;
     if( $scope.from=='inFix'){
       $scope.title="室内报修";
-      $scope.enterInfo.typeId=1;
     }else if( $scope.from=='wash'){
       $scope.title="洗衣服务";
-      $scope.enterInfo.typeId=3;
     }else if( $scope.from=='housekeeping'){
       $scope.title="家政服务";
-      $scope.enterInfo.typeId=2;
     }
 
 
@@ -215,7 +209,7 @@ define([], function () {
             convenientService.SaveImg($scope.imgSrc,id,2).then(function (data) {
               commonService.LoadingEnd();
               if(data.status==200){
-                alert('提交成功，我们的工作人员将及时跟进');
+                alert('提交成功，工作人员将及时跟进');
                 history.go(-1);
               }else {
                 alert('图片上传失败');
@@ -228,7 +222,7 @@ define([], function () {
             //window.close();
             //window.open("","_self").close();
             commonService.LoadingEnd();
-            alert('提交成功，我们的工作人员将及时跟进');
+            alert('提交成功，工作人员将及时跟进');
             history.go(-1);
           }
         }else {

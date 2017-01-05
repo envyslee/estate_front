@@ -1,0 +1,17 @@
+---
+name: investmentDetail
+url: /investmentDetail
+controller: investmentDetailController
+dependencies: controllers/investmentDetailController,services/informationService
+---
+<div class="ui-container" >
+  <div class="primary title-bar">
+    <div class="center title">详情</div>
+    <span class="left"><a style="display: block;" href="javascript:window.history.back()"><img zf-iconic="" icon="chevron" data-direction="left" size="small"></a></span>
+  </div>
+
+  <div style="width:98%;margin: 0 auto">
+    <p>{{content}}</p>
+  </div>
+
+</div>
