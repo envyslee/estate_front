@@ -6,19 +6,19 @@ var app = null;
   app = angular.module('beauty', [
     'ui.router',
     'ngResource',
-    'ngAnimate',
+    //'ngAnimate',
 
     //foundation
     'foundation',
     'foundation.dynamicRouting',
-    'foundation.dynamicRouting.animations',
+    //'foundation.dynamicRouting.animations',
     'infinite-scroll'
   ]);
 
   app.service = {
-    'baseUrl': 'http://localhost:8080/wy',
+    //'baseUrl': 'http://localhost:8080/wy',
 
-    //'baseUrl': '/wy',
+    'baseUrl': '/wy',
 
     'type':'1',
     'version':'1.0'

@@ -1,3 +1,38 @@
+/*@charset "utf-8";*/
+
+/*html {*/
+  /*font-size: 20px;*/
+/*}*/
+
+/*@media only screen and (min-width: 400px) {*/
+  /*html {*/
+    /*font-size: 21.33333333px !important;*/
+  /*}*/
+/*}*/
+
+/*@media only screen and (min-width: 414px) {*/
+  /*html {*/
+    /*font-size: 22.08px !important;*/
+  /*}*/
+/*}*/
+
+/*@media only screen and (min-width: 480px) {*/
+  /*html {*/
+    /*font-size: 25.6px !important;*/
+  /*}*/
+/*}*/
+
+/*!*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css *!*/
+/*html {*/
+  /*font-family: sans-serif;*/
+  /*-webkit-text-size-adjust: 100%;*/
+  /*-ms-text-size-adjust: 100%;*/
+/*}*/
+
+/*body {*/
+  /*margin: 0;*/
+/*}*/
+
 .list-top{
   margin-top: 2px;
 }
