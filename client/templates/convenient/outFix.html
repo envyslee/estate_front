@@ -10,27 +10,31 @@ dependencies: controllers/outFixController,services/commonService,services/conve
     <span class="right"><a ui-sref="outFixAdd">新增报修</a></span>
   </div>
 
-  <div class="grid-block" ng-repeat="t in fixList" style="border-bottom: 1px solid #ccc">
-    <a ui-sref="outFixDetail({id:'{{t.id}}'})" style="width: 100%;padding: 12px;overflow-y: hidden">
 
-      <div class="grid-block  vertical " style="margin: auto 0">
-        <div class="grid-block" style="width: 100%;overflow-y: hidden">
-          <strong >{{t.userName}}</strong>
-          <div class="grid-block align-right" >
-            <img ng-if="t.status==1" src="assets/images/estate-img/xinbaoxiu.png" width="50px">
-            <img ng-if="t.status==2" src="assets/images/estate-img/yijiejue.png"  width="50px">
+
+  <div infinite-scroll='nextPage()' infinite-scroll-disabled='list.busy' infinite-scroll-distance='1'>
+    <div class="grid-block" ng-repeat="t in list.items" style="border-bottom: 1px solid #ccc;margin-top: 12px;padding-bottom: 6px">
+      <a ui-sref="outFixDetail({id:'{{t.id}}'})" style="width: 100%;padding: 12px;overflow-y: hidden">
+        <div class="grid-block  vertical " style="margin: auto 0">
+          <div class="grid-block" style="width: 100%;overflow-y: hidden">
+            <strong >{{t.userName}}</strong>
+            <div class="grid-block align-right" >
+              <img ng-if="t.status==1" src="assets/images/estate-img/xinbaoxiu.png" style="width: 50px;height: 25px">
+              <img ng-if="t.status==2" src="assets/images/estate-img/yijiejue.png" style="width: 50px;height: 25px">
+            </div>
+
           </div>
-
+          <div class="grid-block" style="margin-top: 6px;overflow-y: hidden">
+            <span>{{t.area}}</span>
+            <span class="grid-block align-right" style="overflow-y: hidden">{{t.createDate}}</span>
+          </div>
+          <div class="grid-block" style="margin-top: 6px;overflow-y: hidden">
+            <span>{{::t.content}}</span>
+          </div>
         </div>
-        <div class="grid-block" style="margin-top: 6px;overflow-y: hidden">
-          <span>{{t.area}}</span>
-          <span class="grid-block align-right" style="overflow-y: hidden">{{t.createDate}}</span>
-        </div>
-        <div class="grid-block" style="margin-top: 6px;overflow-y: hidden">
-          <span>{{::t.content}}</span>
-        </div>
-      </div>
-    </a>
+      </a>
+    </div>
+    <div ng-show="list.busy" style="text-align: center;margin-top: 4px">正在加载...</div>
   </div>
 
 </div>

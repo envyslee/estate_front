@@ -49,7 +49,7 @@ define([], function () {
             commonService.LoadingEnd();
             history.go(-1);
           }else {
-            convenientService.SaveImg($scope.imgSrc,data.data,3).then(function (d) {
+            convenientService.SaveImg($scope.imgSrc,data.data,7).then(function (d) {
               if(d.status==200){
                 alert('提交成功，工作人员将及时跟进');
                 history.go(-1);

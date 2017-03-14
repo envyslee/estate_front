@@ -101,10 +101,11 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
-    var getInvestment=function () {
+    var getInvestment=function (id) {
       var param={
         type:type,
-        version:version
+        version:version,
+        id:id
       }
       var url=baseUrl+"/api/server/getInvestment";
       return commonService.BasePostRequest(url,param);

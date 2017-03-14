@@ -9,11 +9,24 @@ define([], function () {
       $state: $state
     }));
 
+    var id=0;
+    switch ($stateParams.name){
+      case 'zs':
+        id=3;
+        $scope.title='在线招商';
+        break;
+      case 'tz':
+        id=1;
+        $scope.title='通知公告';
+        break;
+      default:
+        break;
+    }
 
 
     $scope.imInit=function () {
       commonService.Loading();
-      informationService.GetInvestment().then(function (data) {
+      informationService.GetInvestment(id).then(function (data) {
         commonService.LoadingEnd();
         if(data.status==200){
           $scope.list=data.data;

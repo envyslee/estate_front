@@ -188,6 +188,7 @@ define([], function () {
         alert('手机号不正确，请重新输入');
         return;
       }
+
       commonService.Loading();
       informationService.SubmitSell($scope.outInfo,type=='sale'?1:2).then(function (d) {
         if(d.status==200) {
@@ -195,10 +196,10 @@ define([], function () {
             commonService.LoadingEnd();
             history.go(-1);
           } else {
-            convenientService.SaveImg($scope.imgSrc, d.data, 1).then(function (data) {
+            convenientService.SaveImg($scope.imgSrc, d.data,5).then(function (data) {
               commonService.LoadingEnd();
               if (data.status == 200) {
-                alert('提交成功，我们的工作人员将尽快给您推荐优质客源');
+                alert('提交成功，工作人员将尽快给您推荐优质客源');
                 history.go(-1);
               } else {
                 alert('图片上传失败');

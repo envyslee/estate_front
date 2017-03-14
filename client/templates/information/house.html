@@ -44,7 +44,7 @@ dependencies: controllers/houseController,services/commonService,services/inform
         <a ui-sref="houseDetail({id:'{{t.id}}'})">
           <div>
             <span>{{t.title}}</span>
-            <span >{{t.time|date:'yyyy/MM/dd hh:mm:ss'}}</span>
+            <span >{{t.time|date:'yyyy/MM/dd HH:mm:ss'}}</span>
           </div>
         </a>
       </li>
@@ -59,7 +59,7 @@ dependencies: controllers/houseController,services/commonService,services/inform
           <a ui-sref="houseDetail({id:'{{s.id}}'})">
             <div>
               <span>{{s.title}}</span>
-              <span >{{s.time|date:'yyyy/MM/dd hh:mm:ss'}}</span>
+              <span >{{s.time|date:'yyyy/MM/dd HH:mm:ss'}}</span>
             </div>
           </a>
         </li>

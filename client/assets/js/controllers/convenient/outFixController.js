@@ -9,21 +9,39 @@ define([], function () {
       $state: $state
     }));
 
-
-    $scope.outFixInit=function () {
-      commonService.Loading();
-      convenientService.GetOutFixList().then(function (data) {
-        commonService.LoadingEnd();
-        if(data.status==200){
-          $scope.fixList=data.data;
-        }else {
-          alert('获取维修列表出错，请稍后再试');
-        }
-      },function (e) {
-        commonService.LoadingEnd();
-        alert('获取维修列表出错，请稍后再试');
-      })
+    $scope.list = {
+      items :[],
+      busy : false,
+      after: '',
+      page : 1,
+      rows:10,
+      areaName:''
     }
+
+
+
+    $scope.nextPage=function () {
+      if ($scope.list.busy){
+        return;
+      }
+      $scope.list.busy=true;
+
+      //ajax更新数据
+      convenientService.GetOutFixList($scope.list.page,$scope.list.rows).then(function (d) {
+        if(d.total>0){
+          $scope.list.page++;
+          var data=$scope.list.items;
+          $scope.list.items=data.concat(d.data);
+        }
+        $scope.list.busy=false;
+      },function () {
+        alert('获取数据异常，请稍后再试');
+      });
+
+    }
+
+
+
 
 
   };

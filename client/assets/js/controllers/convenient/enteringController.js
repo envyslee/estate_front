@@ -19,13 +19,17 @@ define([], function () {
       typeId:$stateParams.typeId
     }
 
+    var picType=7;
     $scope.from=$stateParams.from;
     if( $scope.from=='inFix'){
+      picType=6;
       $scope.title="室内报修";
     }else if( $scope.from=='wash'){
       $scope.title="洗衣服务";
+      picType=9;
     }else if( $scope.from=='housekeeping'){
       $scope.title="家政服务";
+      picType=8;
     }
 
 
@@ -206,7 +210,7 @@ define([], function () {
         if(d.status==200){
           var id=d.data;
           if($scope.imgSrc.i1!=''||$scope.imgSrc.i2!=''||$scope.imgSrc.i3!=''){
-            convenientService.SaveImg($scope.imgSrc,id,2).then(function (data) {
+            convenientService.SaveImg($scope.imgSrc,id, picType).then(function (data) {
               commonService.LoadingEnd();
               if(data.status==200){
                 alert('提交成功，工作人员将及时跟进');

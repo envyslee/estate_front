@@ -14,7 +14,7 @@ define([], function () {
       busy : false,
       after: '',
       page : 1,
-      rows:5,
+      rows:10,
       areaName:''
   }
 

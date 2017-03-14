@@ -90,12 +90,12 @@ dependencies: controllers/outController,services/commonService,services/informat
 
     <label>
       面积
-      <input ng-model="outInfo.houseArea" type="text" placeholder="请输入您房屋的面积" required>
+      <input ng-model="outInfo.houseArea" type="number" placeholder="请输入您房屋的面积" required>
     </label>
 
     <label>
       价格
-      <input ng-model="outInfo.housePrice" type="text" placeholder="请输入您的理想价位" required>
+      <input ng-model="outInfo.housePrice" type="number" placeholder="请输入您的理想价位" required>
     </label>
 
     <label>
@@ -112,7 +112,7 @@ dependencies: controllers/outController,services/commonService,services/informat
       <textarea ng-model="outInfo.remarks" placeholder="您可以备注您的特殊要求，比如楼层、绿化等" rows="5" ></textarea>
     </label>
 
-    <p class="alert-font"><span style="color: red">*</span>提交后，我们的工作人员将尽快给您推荐优质客源</p>
+    <p class="alert-font"><span style="color: red">*</span>提交后，工作人员将尽快给您推荐优质客源</p>
     <a class="expand button btn-bottom" href="javascript:void(0)" ng-class="{true:'disabled',false:''}[saleForm.$invalid]" ng-click="outSubmit()">提交</a>
   </form>
 

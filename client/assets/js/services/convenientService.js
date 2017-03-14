@@ -82,10 +82,12 @@ define([], function () {
       return commonService.BasePostRequest(url,param);
     }
 
-    var getOutFixList=function () {
+    var getOutFixList=function (page,rows) {
         var param={
+          page:page,
+          rows:rows,
           type:type,
-          version:version,
+          version:version
         }
       var url=baseUrl+"/api/server/getOutFixList";
       return commonService.BasePostRequest(url,param);

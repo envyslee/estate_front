@@ -1,21 +1,26 @@
 ---
 name: investment
-url: /investment
+url: /investment/:name
 controller: investmentController
 dependencies: controllers/investmentController,services/commonService,services/informationService
 ---
 <div class="ui-container" ng-init="imInit()">
   <div class="primary title-bar">
-    <div class="center title">在线招商</div>
+    <div class="center title">{{title}}</div>
   </div>
 
-  <div class="grid-block vertical" ng-repeat="l in list" style="margin: 12px;border-bottom:1px solid #ccc;padding-bottom: 6px" ng-click="showContent(l.content)">
+  <div class="grid-block" ng-repeat="l in list" style="margin: 12px;border-bottom:1px solid #ccc;padding-bottom: 6px" ng-click="showContent(l.content)">
+    <div class="grid-block">
+      <img src="{{l.picUrl}}" style="height: 60px;">
+    </div>
+    <div class="grid-block vertical">
     <div class="grid-block div-height">
       <strong>{{l.title}}</strong>
       <div class="grid-block align-right">{{l.createTime|date:'yyyy/MM/dd hh:mm:ss'}}</div>
     </div>
 
     <div class="grid-block div-height" style="margin-top: 12px">{{l.contentSub}}</div>
+    </div>
   </div>
 
  </div>
