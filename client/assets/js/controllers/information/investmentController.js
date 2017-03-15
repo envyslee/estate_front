@@ -15,7 +15,7 @@ define([], function () {
         id=3;
         $scope.title='在线招商';
         break;
-      case 'tz':
+      case 'gg':
         id=1;
         $scope.title='通知公告';
         break;

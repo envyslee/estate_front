@@ -50,6 +50,7 @@ define([], function () {
             history.go(-1);
           }else {
             convenientService.SaveImg($scope.imgSrc,data.data,7).then(function (d) {
+              commonService.LoadingEnd();
               if(d.status==200){
                 alert('提交成功，工作人员将及时跟进');
                 history.go(-1);
@@ -57,6 +58,7 @@ define([], function () {
                 alert('图片上传失败');
               }
             },function (e) {
+              commonService.LoadingEnd();
               alert('图片上传失败');
             })
           }
